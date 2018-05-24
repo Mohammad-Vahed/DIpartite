@@ -41,7 +41,7 @@ If you have the following sequence Fasta format:
 
 sample:
 
-> >seq1
+'>' >seq1
 
 ATCTGAATGCAAGCTGCACACGTTTTTCAGATAAA
 

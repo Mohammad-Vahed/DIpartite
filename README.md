@@ -41,18 +41,19 @@ If you have the following sequence Fasta format:
 
 sample:
 
-'>' >seq1
+'
+>seq1
 
 ATCTGAATGCAAGCTGCACACGTTTTTCAGATAAA
 
-> >seq2
+>seq2
 
 AGTCAGACTACAAGCTGCACACTTTTCAGATAAA
 
-> >seq3
+>seq3
 
 ATCTGAATCTACAAGCTGCACGTTTTTCAGATAAA
-
+'
 
 
 If you have the following sequence Text format:

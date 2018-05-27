@@ -1,5 +1,5 @@
 /*
- * new1.cxx
+ * DIpartite.cxx
  * 
  * Copyright 2016 mohammad <mohammad@ht04>
  * 

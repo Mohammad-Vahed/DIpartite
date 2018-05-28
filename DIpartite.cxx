@@ -55,7 +55,7 @@ class Computer {
 			
 			string g1,md1,p1,lm1,rm1,ming1,maxg1,t1;
 			string output,address3;
-		    output="/home/mohammad/Documents/test.txt";
+		  
 		    
 		cout<<"Hello\n";
 		cout<<"Please input data:";
@@ -68,7 +68,7 @@ class Computer {
 		ming1="0";
 		maxg1="0";
 		getline(cin,input);
-		//getline(cin,input);
+		
 			
 		x=input.length();
 
@@ -147,14 +147,14 @@ class Computer {
 			if((input[i]=='-')&&(input[i+1]=='o')){
 				output=" ";
 				i+=3;
-				while ((input[i] != ' ')&&((input[i+1] != '-')||(input[i+1] != ' '))) {
+				while ((input[i] != ' ')&&(input[i+1] != '-')) {
 				output[j]=input[i];
 				j++;
 				i++;}}
 				j=0;
 			if((input[i]=='-')&&(input[i+1]=='i')){
 				i+=3;
-				while ((input[i] != ' ')&&((input[i+1] != '-')||(input[i+1] != ' '))) {
+				while ((input[i] != ' ')&&(input[i+1] != '-')) {
 				address3[j]=input[i];
 				j++;
 				i++;}

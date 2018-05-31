@@ -16,7 +16,7 @@
 using namespace std;
 
 class Computer {
-		//Class stuff will go in here
+		
 		public:
 		
 		
@@ -48,11 +48,7 @@ class Computer {
 		input=input+' ';
 			
 		x=input.length();
-	    //cout<<x<<"\n";
-	    //for(i=0 ; i<x ; i++)
-	    //cout<<input[i];
-	    //cout<<"\n";
-		
+	    
  
 		i=0;
 		j=0;
@@ -199,33 +195,7 @@ class Computer {
 	
 	
 	cout<<"\n";
-	/*
-	cout<<g<<"\n";
-	cout<<p<<"\n";
-	cout<<md<<"\n";
-	cout<<lml<<"\n";
-	cout<<rml<<"\n";
-	cout<<ming<<"\n";
-	cout<<maxg<<"\n";
-	cout<<tf<<"\n";
-	j=address3.length();
-	cout<<j<<"\n";
-	for(i=0 ; i<j ; i++){
-	cout<<address3[i];
-	//cout<<output<<"\n";	
-	}
 	
-	j=addre.length();
-	cout<<j<<"\n";
-	for(i=0 ; i<j ; i++)
-	cout<<addre[i];
-	
-	cout<<"\n";
-	
-	j=output.length();
-	for(i=0 ; i<j ; i++)
-	cout<<output[i];
-	*/
 		
 		while(f==false){
 		//cout<<"\n If you want choose Fasta file, please input 1 and Text file, please input 2:";
@@ -343,12 +313,7 @@ class Computer {
            }
 		}
 		
-//-i /home/mohammad/Documents/peresentation for uni of US/sigmaD.fasta -f 2 -n 1 -p 1 -m 6 -g 11 -G 16 -t 18 -M 6 -o /home/mohammad/Documents/peresentation for uni of US/text1.txt
-        
-            
-          
-		
-	
+
 		
 		
 		void output_information()
@@ -397,14 +362,7 @@ class Computer {
 		void textmining()
 		{
 			
-			//char ch,str2[374][42],str4[1000][42];
-			//int *lenstr2;
-			//lenstr2.resize(374);
-			//const int n1=374;
-			 
 			
-			    // myfile4.open(address.c_str() , ios::out | ios::app | ios::binary);
-                
                  if(!myfile4.is_open()){
                 cout << "\n ERROR Your Dtat Is Not Correct.\n";
         }
@@ -1507,9 +1465,6 @@ int main(int argc, char *argv[])
 	 }
 	 
 	     
-                
-    
-   // computer_one.myfile4.open("/home/mohammad/Documents/project motifs/Data Sigma/sigmaG.fasta", ios::out | ios::app | ios::binary);
 	computer_one.read(input2);
 	computer_one.output_information();
 	

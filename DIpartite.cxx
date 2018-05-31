@@ -1,26 +1,3 @@
-/*
- * DIpartite.cxx
- * 
- * Copyright 2016 mohammad <mohammad@ht04>
- * 
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
- * 
- * 
- */
-
 
 #include <iostream>
 #include <sstream>
@@ -43,22 +20,22 @@ class Computer {
 		public:
 		
 		
-		void read(){
+		void read(string address2){
 			ifstream inFile;
 			
 		
-           
+           input=address2;
     
-			
+			int k1,k2,k3;
 			bool f,f1,f2,f3,f4,f5,f6,f7,f8;
 			f=f1=f2=f3=f4=f5=f6=f7=f8=false;
 			
-			string g1,md1,p1,lm1,rm1,ming1,maxg1,t1;
-			string output,address3;
-		  
-		    
-		cout<<"Hello\n";
-		cout<<"Please input data:";
+			string md1,p1,lm1,rm1,ming1,maxg1,t1,output,a,b;
+			
+	   
+		
+		output="output.txt";
+		
 		t1="30";
 		p1="1";
 		md1="1";
@@ -67,31 +44,84 @@ class Computer {
 		rm1="6";
 		ming1="0";
 		maxg1="0";
-		getline(cin,input);
-		
+		//getline(cin,input);
+		input=input+' ';
 			
 		x=input.length();
-
-		input=input+' ';
+	    //cout<<x<<"\n";
+	    //for(i=0 ; i<x ; i++)
+	    //cout<<input[i];
+	    //cout<<"\n";
 		
-		
-		
+ 
 		i=0;
 		j=0;
+		k1=k2=k3=0;
+		for(i=0 ; i<=x ; i++){
+			if((input[i]=='-')&&(input[i+1]=='h')){
+				cout<<"Help commands:"<<"\n";
+				cout<<"----------------------------------------------------------------------------------------------------"<<"\n";
+				cout<<"-i input file"<<"\n";
+				cout<<"-m left motif width (default 6)"<<"\n";
+				cout<<"-M right motif width (default 6)"<<"\n";
+				cout<<"-g min gap between two motif blocks (default 0)"<<"\n";
+				cout<<"-G max gap between two motif blocks (default 0)"<<"\n";
+				cout<<"-t number of times trying to repeat process to find best motif (default 30)"<<"\n";
+				cout<<"-o output file (default output.txt)"<<"\n";
+				cout<<"-f 1 for fasta file, or 2 for text file (no header) (default 1)"<<"\n";
+				cout<<"-p 1 for the given strand, or 2 for both the given and reverse complement strands (default 1)"<<"\n";
+				cout<<"-n 1 for PWM, or 2 for DWM (default 1)"<<"\n";
+				cout<<"----------------------------------------------------------------------------------------------------"<<"\n";
+			exit(0);
+			}
+			
+			if((input[i]=='-')&&(input[i+1]=='i')){
+				i=i+3;
+				k3=i;
+				address.clear();
+				while (input[i] != ' '){
+			    a[j]=input[i];
+			    k1++;
+			    j++;
+			    i++;}
+			   address=input.substr(k3,k1);
+			   }
+			   k1=0;
+			   j=0;
+			   if((input[i]=='-')&&(input[i+1]=='o')){
+				i=i+3;
+				output.clear();
+				k3=i;
+				while (input[i] != ' '){
+			    b[j]=input[i];
+			    k1++;
+			    j++;
+			    i++;
+			   }
+			   output=input.substr(k3,k1);
+		}
+	}
+		
+	
+		cout<<"\n";
+		
+	
+		i=0;
+		j=0;
+		
 		while(i <= x){
 			
-			
-				
-			if((input[i]=='-')&&(input[i+1]=='f')){
+			   if((input[i]=='-')&&(input[i+1]=='f')){
+				j=0;
 				i+=3;
 				while (input[i] != ' ') {
 				g1[j]=input[i];
 				j++;
 				i++;}}
-				
 			
-			j=0;	
-			if((input[i]=='-')&&(input[i+1]=='n')){
+				
+			   else if((input[i]=='-')&&(input[i+1]=='n')){
+				j=0;   
 				i+=3;
 				while (input[i] != ' ') {
 				md1[j]=input[i];
@@ -99,71 +129,63 @@ class Computer {
 				i++;}}
 				
 			
-			j=0;	
-			if((input[i]=='-')&&(input[i+1]=='p')){
+				
+			   else if((input[i]=='-')&&(input[i+1]=='p')){
 				i+=3;
 				while (input[i] != ' ') {
 				p1[j]=input[i];
 				j++;
 				i++;}}
-
-			j=0;	
-			if((input[i]=='-')&&(input[i+1]=='m')){
+                
+				
+			   else if((input[i]=='-')&&(input[i+1]=='m')){
+				j=0;
 				i+=3;
 				while (input[i] != ' ') {
 				lm1[j]=input[i];
 				j++;
 				i++;}}
-			j=0;	
-			if((input[i]=='-')&&(input[i+1]=='M')){
+			    
+			    	
+			   else if((input[i]=='-')&&(input[i+1]=='M')){
+				j=0;
 				i+=3;
 				while (input[i] != ' ') {
 				rm1[j]=input[i];
 				j++;
 				i++;}}
-			j=0;	
-			if((input[i]=='-')&&(input[i+1]=='g')){
+			    	
+			    
+			   else if((input[i]=='-')&&(input[i+1]=='g')){
+				j=0;
 				i+=3;
 				while (input[i] != ' ') {
 				ming1[j]=input[i];
 				j++;
 				i++;}}
-			j=0;	
-			if((input[i]=='-')&&(input[i+1]=='G')){
+			    
+			    	
+			   else if((input[i]=='-')&&(input[i+1]=='G')){
+				j=0;
 				i+=3;
 				while (input[i] != ' ') {
 				maxg1[j]=input[i];
 				j++;
 				i++;}}
-			j=0;	
-			if((input[i]=='-')&&(input[i+1]=='t')){
-				t1="1";
+			    	
+			    
+			   else if((input[i]=='-')&&(input[i+1]=='t')){
+				j=0;
 				i+=3;
 				while (input[i] != ' ') {
 				t1[j]=input[i];
 				j++;
 				i++;}}
-				j=0;	
-			if((input[i]=='-')&&(input[i+1]=='o')){
-				output=" ";
-				i+=3;
-				while ((input[i] != ' ')&&(input[i+1] != '-')) {
-				output[j]=input[i];
-				j++;
-				i++;}}
-				j=0;
-			if((input[i]=='-')&&(input[i+1]=='i')){
-				i+=3;
-				while ((input[i] != ' ')&&(input[i+1] != '-')) {
-				address3[j]=input[i];
-				j++;
-				i++;}
-				}
 				
-			
+				
+				else	
+	       i++;			
 		
-		else
-		i++;
 	}
 	
 	g=atoi(g1.c_str());
@@ -177,9 +199,37 @@ class Computer {
 	
 	
 	cout<<"\n";
+	/*
+	cout<<g<<"\n";
+	cout<<p<<"\n";
+	cout<<md<<"\n";
+	cout<<lml<<"\n";
+	cout<<rml<<"\n";
+	cout<<ming<<"\n";
+	cout<<maxg<<"\n";
+	cout<<tf<<"\n";
+	j=address3.length();
+	cout<<j<<"\n";
+	for(i=0 ; i<j ; i++){
+	cout<<address3[i];
+	//cout<<output<<"\n";	
+	}
+	
+	j=addre.length();
+	cout<<j<<"\n";
+	for(i=0 ; i<j ; i++)
+	cout<<addre[i];
+	
+	cout<<"\n";
+	
+	j=output.length();
+	for(i=0 ; i<j ; i++)
+	cout<<output[i];
+	*/
 		
 		while(f==false){
-			
+		//cout<<"\n If you want choose Fasta file, please input 1 and Text file, please input 2:";
+		//cin>>g;	
 		if(g==1 || g==2) 
 	      f=true;
 	     else
@@ -188,16 +238,21 @@ class Computer {
 	    }
 	    
 	    
+		//cout<<"\n Please enter a your data file address:";
+		//getline(cin,address3);
+		
+		//getline(cin,address);
 	    while(f7==false){
 		cout << "\n";
-		myfile4.open(address3.c_str() , ios::out | ios::app | ios::binary);
+		myfile4.open(address.c_str() , ios::out | ios::app | ios::binary);
 		 if(!myfile4.is_open()){
-                cout << "\n ERROR Your Dtat Is Not Correct.\n";
+                cout << "\n ERROR Your Data is not correct.\n";
                 cout<<"\n Please enter a your data file address:";
-		        getline(cin,address3);}
+		        getline(cin,address);}
          else
            f7=true;
-	   }       
+	   }
+	          
 		
 		
 		while(f6==false){
@@ -288,7 +343,8 @@ class Computer {
            }
 		}
 		
-
+//-i /home/mohammad/Documents/peresentation for uni of US/sigmaD.fasta -f 2 -n 1 -p 1 -m 6 -g 11 -G 16 -t 18 -M 6 -o /home/mohammad/Documents/peresentation for uni of US/text1.txt
+        
             
           
 		
@@ -298,16 +354,20 @@ class Computer {
 		void output_information()
 		{
 			
-			cout<<"\n-----------------------------------------------\n";
-			
+			cout<<"\n-------------------------------------------------------------------------\n";
+			//lml=22;
+			//rml=0;
 			lms=lml+rml;
-			
+			//md=2;
 			if(md==1){
 			nu=4;
 			lm=lms;}
 			else if (md==2){
 			nu=16;	
 			lm=lms-1;}
+			//max=3
+            //tf=3;
+			//p=2;
 			x=1;
 			a=0;
 			l=0;
@@ -318,6 +378,9 @@ class Computer {
 			r=0;
 			ns=0;
 			nmax=30;
+			//g=2;
+			//ming=0;
+			//maxg=0;
 			min=0;
 			if(md==1){
 			da[0]="A"; da[1]="C"; da[2]="G"; da[3]="T";
@@ -334,7 +397,14 @@ class Computer {
 		void textmining()
 		{
 			
+			//char ch,str2[374][42],str4[1000][42];
+			//int *lenstr2;
+			//lenstr2.resize(374);
+			//const int n1=374;
+			 
 			
+			    // myfile4.open(address.c_str() , ios::out | ios::app | ios::binary);
+                
                  if(!myfile4.is_open()){
                 cout << "\n ERROR Your Dtat Is Not Correct.\n";
         }
@@ -345,7 +415,12 @@ class Computer {
 			j=0;
 			flag=false;
                 while((myfile4 >> noskipws >> ch ) && (!myfile4.eof())) {
-									
+				/*	if (k==0){
+					cout<<">"<<i+1;
+					cout<<'\n';
+					k=1;
+					}*/
+											
 					 if (ch!='\n'){				
 					 cout << ch ;
 					 if(j<100 and i<2000){
@@ -366,7 +441,9 @@ class Computer {
 						sum=sum+lenstr2[i1];
 						i1++;
 						}
+						
 					}
+					
 					 str4[i][j]='\n';	 
                      flag= !flag;
                      j=0;
@@ -377,6 +454,8 @@ class Computer {
 				      }
 				 
               }
+              
+              
               myfile4.close();
 		  }
 		  
@@ -385,7 +464,9 @@ class Computer {
 		  else
 			 max=i;
 			 
-		 
+		 // cout<<'\n'<<"Number of sequence:"<<max<<"  Number of line:"<<max<<'\n';
+		   
+		  
 		  i1=0;
 		  if(g==1){
 		  for(j=1 ; j<(max*2) ; j+=2){
@@ -394,6 +475,7 @@ class Computer {
 				 ns++;
 		      for(k=0 ; k<lenstr2[i1] ; k++) {
 		        str2[i1][k]=str4[j][k];
+		        
 				 if (((str2[i1][k]=='A')||(str2[i1][k]=='C')||(str2[i1][k]=='G')||(str2[i1][k]=='T'))){
 					 x++;
 				 if(flag==true){
@@ -425,19 +507,34 @@ class Computer {
 		
 		
 		for(i=0 ; i<ns ; i++){
-		
+		//cout<<">"<<i+1<< "\t"<<sigb[i][0]<<"\n";
+		  
+		  
 	         for(k=0 ; k<lenstr2[i] ; k++)
 	         {
 				str2[i][k]=toupper(str2[i][k]);
 	    
+	         //cout<<str2[i][k];
 	         
 		 }
-	      
+	      //   cout<<"\t"<<lenstr2[i]<<"\t"<<sigb[i][1]<<'\n';
+	     //cout<<'\n';
 		 }
 		  sum=0;
 		  g=0;
-                printf("\n--------------------------------------------------------------------\n");
-                }	
+          // printf("\n--------------------------------------------------------------------\n");
+                for(i=0 ; i<(max*2) ; i++)
+                if(i % 2 ==0){
+					k=i/2;
+                for(j=0 ; str4[i][j] !='\0' ; j++){
+                str5[k][j]=str4[i][j];
+                //cout<<str5[k][j];
+                }
+                
+                }
+             
+                
+                	}
 		//--------------------------------------------------------------	
          void reverse(){
 			 for(i=0 ; i<max ; i++){
@@ -459,7 +556,14 @@ class Computer {
 		}
 	}
 	 
-	 
+	 /*  cout<<"\n----------REVERSE------------------\n";
+			for(i=0 ; i<max ; i++) {
+				cout<<">"<<i+1<<'\n';
+				for(j=0 ; j<lenstr2[i] ; j++)
+					cout<<str3[i][j];
+					cout<<'\n';
+				}*/
+			 
 		 } 
 	    //--------------------------------------------------------------  	     
 	     void selectrandom()
@@ -478,7 +582,11 @@ class Computer {
 			     
 		  }
 		  
+		//  for(i=0 ; i<max ; i++)
+		//    cout<<rndnuml[i][r]<<":"<<rndnumr[i][r]<<" "<<rndnumr[i][r]-rndnuml[i][r]-4<<"\n";
+		  
 		 
+			 
 			
 		 }
 		 
@@ -486,7 +594,14 @@ class Computer {
 		
 		 void startlocation()
 		  {
-			
+			  
+			//const int n1=lm , n2=max;
+			//char ran1[n2][n1]; 
+			  
+			 
+			 
+		     //char ran1[n2][n1]; 
+			  
 			  for(j=0 ; j<max ; j++){
 			  k=0;
 			  rnd=rndnuml[j][r];
@@ -537,19 +652,23 @@ class Computer {
 	 //-----------------------------------------------------------------
 	 
 	 void PPM(){
-		
+		 
+		// printf("\nTherefore the resulting Position Probability Matrix (PPM):\n");
+		// printf("\n Column1  Column2  Column3  Column4  Column5\n");
 		 sum=0;
 		 for(i=0 ; i<lm ; i++){
-		
+		//	  cout<<da[i]<<"\t";
 			    for(j=0 ; j<lm ; j++){
 					freq1[i][j]=(float(freq[i][j])/(max+1));
 					sum=sum+freq1[i][j];
-			
+			//		if(j<11)
+			//       printf(" %.2f   ",freq1[i][j]);
 			   }
 			
-					 
+		//cout<<'\n' ;				 
 		 }
-	
+	//	 printf("\nThe Added total Table PPM:%.2f \n",sum);
+		 
 	 }
 	 
 	 //-----------------------------------------------------------------
@@ -694,12 +813,15 @@ class Computer {
 			            }
 			            
 			         }
-		
+		//	cout<<"\nprint nucleotide count of random select PFM:\n";
+		//		   printf("   Backgrand   \n");
 				  for(i=0 ; i<nu ; i++){
-		
+		//            cout<<da[i]<<"\t"<<BG[i]<<"\t";
 		            sum=sum+BG[i];
 		            sum2=sum2+BG2[i];
-		
+		//		      for(j=0 ; j<(lm-1) ; j++)
+		//		          printf("%d  ",freq[i][j]);
+		//	      cout<<"\n";
 				} 
 				
 		//		cout<<"\nprint LIKELIHOOD: ((MatrixPFM[i]+0.25 )/ (total number of colum+1))\n";
@@ -775,14 +897,26 @@ class Computer {
 			 	   for(j=0 ; j<lms ; j++) 
 			 	     seq2[i][j]='\0';
 			      
-	
+	/*		  
+			 	 for (l=0 ; l<a ; l++){
+					 cout<<l<<":";
+			 	 for (j=0 ; j<lm ; j++)
+			 	 cout<<seq2[l][j];
+			 	 
+			 	 cout<<"\t"<<" "<<positionl[l]<<","<<positionr[l];
+			// 	if (l%3==0)
+			 	 cout<<"\n";
+			 	 
+			 	 }*/  
 			 }
 		
 		//--------------------------------------------------------------
 		
 		void score(){
 						
-					 
+		//	cout<<"\n-----------------calculate score for seq"<<selseq<<"----------------\n";
+		//	cout<<" \n-----------------------------------------\nselect sequance "<<selseq<< "\n";
+						 
 			 sum=0;
 			 
 		   
@@ -802,7 +936,12 @@ class Computer {
 					    div=div+log(BG[k]);
 					    score1[i]=score1[i]+log(freq1[k][j]);
 					   }
-				
+				/*	   
+					   if(j<(lm-1))
+					   cout<<"+";
+					   else
+					  printf("/%.6f",div);   */
+					   
 					}
 					score1[i]=score1[i]/div;
 		//			cout<<"="<<score1[i]<<" number:"<<i<<"\n";
@@ -864,7 +1003,17 @@ class Computer {
 			 	   for(j=0 ; j<lms ; j++) 
 			 	     seq4[i][j]='\0';
 			      
-			
+			/*
+			 	 for (l=0 ; l<a ; l++){
+					 cout<<l<<":";
+			 	 for (j=0 ; j<lm ; j++)
+			 	 cout<<seq4[l][j];
+			 	 
+		 //	 cout<<"\t"<<" "<<positionl[l][1]<<","<<positionr[l][1]<<" : "<<positionr[l][0]-positionl[l][0]-lml;
+		//	 	if (l%3==0)
+			 	 cout<<"\n";  
+			 	 
+			 	 }	*/
 	       }
 	
 		//--------------------------------------------------------------
@@ -872,7 +1021,12 @@ class Computer {
 			 //---------------------------------------------------------
 			 void score2twoway(){
 						
-		
+		//	cout<<"\n-----------------calculate score for seq"<<selseq<<"----------------\n";
+		//	cout<<" \n-----------------------------------------\nselect sequance "<<selseq<< "\n";
+						 
+			// sum2[0]=0;
+			// sum2[1]=0;
+			 
 		   
 			 for(i=min ; i<a ; i++){
 				 score2[i][0]=0;
@@ -902,10 +1056,19 @@ class Computer {
 				   
 				   
 				   }
-				
+				/*	   if(j<lm-1)
+					   cout<<"+";
+					   else
+					  printf("/%.6f",div[1]);  
+					  */ 
 					}
 					score2[i][0]=score2[i][0]/div1[0];
 					score2[i][1]=score2[i][1]/div1[1];
+					//cout<<"="<<score2[i][0]<<" number1:"<<i<<"\n";
+					//cout<<"="<<score2[i][1]<<" number2:"<<i<<"\n";
+					
+				//	sum2[0]=sum2[0]+score1[i][0];
+				//	sum2[1]=sum2[1]+score1[i][1];
 					
 					}
 				
@@ -925,15 +1088,18 @@ class Computer {
 				 }
 				 maxsum[k1][1]=maxscor[1];
 				 
-			
+			//	cout<<"\nMaximume Value Number:"<<score1[k1][0]<<"\t"<<score1[k2][1]<<"\n";
+		 // if (maxscor[0]<maxscor[1])
+		  //{
 				rndnuml[z][r]=positionl[k1][0];
 				rndnumr[z][r]=positionr[k1][0];
 				state[z][r]='P';
-			
+			//}
+			//else{
 				rndnuml2[z][r]=positionl[k2][1];
 				rndnumr2[z][r]=positionr[k2][1];
 				state2[z][r]='N';
-			
+			//}
 		}
 			 
 			 //---------------------------------------------------------
@@ -954,7 +1120,10 @@ class Computer {
 			for(j=0 ; j<150 ; j++)	
 			score1[j]=0;	
 					 						
-			
+					 
+	//		  cout<<"Select Random:"<<rndsel<<"\n";
+			  
+			  
 			  
 			  for(j=min ; j<a ; j++){
 				  
@@ -965,7 +1134,10 @@ class Computer {
 			  score1[0]++;
 			  
 			  }
-			
+			  
+			  	  
+		//	  cout<<"\n";
+			  
 			  maxscor[0]=score1[0];
 			  for(j=min ; j<a ; j++){
 			  
@@ -984,6 +1156,9 @@ class Computer {
 		void PFM(){
 			
 			
+	//		cout<<"\n-----------------------------------------------------";
+	//		 printf("\nAfter Calculate 64 step , We have 64 SubSequnce:\n");
+			 
 			 for(j=0 ; j<max ; j++){
 			 
 			 k=0;
@@ -1004,11 +1179,31 @@ class Computer {
 		        	     } 	
 		        	        }
 		        	     
-			
+				
+				
+				
+		/*	
+			for(i=0 ; i<max ; i++){
+				cout<<">"<<i+1;
+				cout<<"\n";
+			   for(j=0 ; j<12 ; j++)
+			        printf("%c",seq1[i][j]);
+			        cout<<"\n";
+		} */
 		
 		count_nucleotide(seq1);
 			
 			
+		
+	/*	cout<<"\nprint nucleotide count of random select PFM:\n";
+			   printf("  \n");
+				  for(i=0 ; i<=15 ; i++){
+		            cout<<da[i]<<"  ";
+				      for(j=0 ; j<11; j++)
+				          printf("%d  ",freq[i][j]);
+				      cout<<"\n";
+				}  */
+				
 		//		cout<<"\nprint LIKELIHOOD: ((MatrixPFM[i]+0.0625 )/ (total number of colum+1))\n";
 				for(i=0 ; i<nu ; i++){
 		//			  cout<<da[i]<<"\t";
@@ -1017,9 +1212,9 @@ class Computer {
 			                   freq1[i][j]=(float((freq[i][j])+0.25)/(max+1));
 			                 else if (md==2)
 			                   freq1[i][j]=(float((freq[i][j])+0.0625)/(max+1));
-		
+		//		          printf("%.2f ",freq1[i][j]);
 					  }
-		
+		//		      cout<<"\n";
 				      }
 			 
 			 
@@ -1040,7 +1235,7 @@ class Computer {
 			   for(i=0 ; i<(lm) ; i++){
 				entropytotal[r][0]=entropytotal[r][0]+entropy[i];
 			}
-				
+				//cout<<"\nTotal Added all Colums is:"<<entropytotal[r][0];
 		    	
 				
 			
@@ -1048,8 +1243,10 @@ class Computer {
 		}	     
 		//--------------------------------------------------------------
 			void step1(){
-	
+	//	cout<<"\n\n------Step1 By New Sequence Computional (Seq1 , Seq3)-------\n";	
+		 
 		selseq=z;
+		//max=lenstr2[z];
 		selectseq();
 		Background_count();
 		subseqlength3(); 
@@ -1061,8 +1258,10 @@ class Computer {
 	    selectreverseseq();	
 	    score2twoway();
         }	
-		
+		//randomgenerate();
 		initial=z;
+		//randomly();
+			     
 		
 		}	 
 			  
@@ -1082,7 +1281,9 @@ class Computer {
 		  rndnumr[i][r]=rndnumr2[i][r];
 		  state[i][r]='N';
 		  	  }
-		 
+		  
+		  
+	//	cout<<"\n";
 		PFM();
 		
 		  
@@ -1109,10 +1310,14 @@ class Computer {
 			f0=abs(f1-f2);
 			if ((f0 < 0.00000001)){
 				bb=true;
-				
+				//entropytotal[r][0]=f2;
 				testi[r]=f1;
+				//cout<<"\nentropytotal[0]:"<<f2<<"\tentropytotal[1]:"<<f1;
+				//cout<<"\nNumber Total Step Repeat is:"<<temp_e[1];
 				
 				x2++;
+				//check[x2]=f1;
+				
 				
 			}
 			else
@@ -1120,6 +1325,7 @@ class Computer {
 				
 				x2=temp_e[1];
 				
+				//check[x2]=f1;
 				temp_e[1]++;
 				
 				f2=f1;
@@ -1128,9 +1334,16 @@ class Computer {
 		if(temp_e[1]>=10){
 			testi[r]=f1;
 			bb=true;
-			
+			//cout<<"\nentropytotal[0]:"<<f2<<"\tentropytotal[1]:"<<f1;
+			//	cout<<"\nNumber Total Step Repeat is:"<<temp_e[1];
 		}
-		      
+		
+		//cout<<"\n"; 
+		
+		
+			//for(i=0 ; i<x2 ; i++)
+			//cout<<check[i]<<"\n";
+			        
     		x=0;		
 		}
 		//--------------------------------------------------------------	
@@ -1143,6 +1356,7 @@ class Computer {
 		
 	    step11();
 	    
+	       // cout<<"\n##########NEW Genrate for Calculate to find motif of Step: "<<r+2<<"  ############\n" ;   
 	        r++;
 	        b=1;
 	    	selectrandom();
@@ -1169,7 +1383,7 @@ class Computer {
 		}
           cout<<"minentropy["<<l<<"]: "<<sum;          
 		  
-		  cout<<"\n-----------------------------------------\n";
+		  cout<<"\n-----------------------------------------------------------------------------\n";
 		  
 		   
                  
@@ -1205,13 +1419,26 @@ class Computer {
 		  }
 		  
 		  for(i=0 ; i<max ; i++){
-				cout<<">"<<i+1<<"\t"<<"Direction: "<<state[i][0];
+			  if(g1=="1"){
+				  for(j=0 ; str5[i][j] !='\n' ; j++)
+				  cout<<str5[i][j];
+			  }
+			  else {
+				cout<<">"<<i+1;
+				}
+				
+				cout<<"\t"<<"Direction: "<<state[i][0];
 				cout<<"\n";
+			
 			   for(j=0 ; j<lms ; j++)
 			        printf("%c",finalmotif[i][j]);
 			        cout<<"\n";
 		} 
-			
+			  
+		  
+		//  for(i=0 ; i<max ; i++)
+		  //cout<<rndnuml[i][l]<<"\t"<<rndnumr[i][l]<<"\n";
+		
 			
 		 cout<<"\n***********************************************\n";
 				 
@@ -1244,32 +1471,46 @@ class Computer {
 		 
                 //std::vector<int> lenstr2;
                 
-		        char ch,str2[1000][100],str3[1000][100],str4[2000][100],state[1000][100],state2[1000][100];
+		        char ch,str2[1000][100],str3[1000][100],str4[2000][100],str5[1000][100],state[1000][100],state2[1000][100];
 	            int i , i1,j,k1,k2,k,l,l2,md,nu,lms,tf,p,rnd,rnd1,rnd2,rnd3,nmax,min,max,ming,maxg,x,A,B,C,D,a,b,r,ns,g,z,lml,rml,lm;
 	            int selseq,initial,lenstr2[1000],freq[16][50],rndnuml[1000][100],rndnumr[1000][100],rndnuml2[1000][100],rndnumr2[1000][100],initialmotif[1000][2],sigb[1000][2];
 	            int temp_e[1000],positionl[1000][2],positionr[1000][2];
 	            float freq1[16][50],freq2[4][50],score1[1000],score2[1000][2];
 	            float BG[16],BG2[16],entropytotal[100][2],entropy[50],minentropy[100],testi[100];
 	            float pe[374][30],rndsel,sum,sum2,sum3,t,div,div1[2],maxscor[2],maxsum[500][2];
-	            string subnuc,subnuc1,address,input;
+	            string subnuc,subnuc1;
 	            bool flag,bb;
                 char line,finalmotif[1000][50],strmotif[1000][50],seq1[1000][50],seq5[1000][50],seq2[1000][50],seq4[1000][50],ran1[1000][50];
                 string da[16];
-                string seq,temp,temp2,temp3;
+                string g1,seq,temp,temp2,temp3,address,input;
                 ifstream myfile1,myfile2,myfile3,myfile4;
                 FILE *student;
                 ostringstream buff;
 };
 
-int main()
+int main(int argc, char *argv[])
 {
 	
 	
+	//Some stuff to interact with the class will go here
 	Computer computer_one;
 	 
+	 string input2;
+	 input2=argv[1];
+	 input2+=" ";
+	 int i=2;
+	 while(i < argc)
+	 {
+	 input2+=argv[i];
+	 input2+=" ";
+	 i++;
+	 }
+	 
 	     
-      
-	computer_one.read();
+                
+    
+   // computer_one.myfile4.open("/home/mohammad/Documents/project motifs/Data Sigma/sigmaG.fasta", ios::out | ios::app | ios::binary);
+	computer_one.read(input2);
 	computer_one.output_information();
 	
 	computer_one.textmining();
@@ -1294,6 +1535,12 @@ int main()
 	
 	computer_one.step21();
 	
+	
+	
+	
+	
+	
+
 	
 	fclose(stdout);
 	

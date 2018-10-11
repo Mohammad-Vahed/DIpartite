@@ -134,40 +134,65 @@ class Computer {
 				i++;}}
                 
 				
-			   else if((input[i]=='-')&&(input[i+1]=='m')){
+			    else if((input[i]=='-')&&(input[i+1]=='m')){
 				j=0;
 				i+=3;
-				while (input[i] != ' ') {
-				lm1[j]=input[i];
-				j++;
-				i++;}}
+				lm1=input[i];
+				i++;
+				if(input[i] != ' '){
+				lm1=lm1+input[i];
+				i++;}
+				//while (input[i] != ' ') {
+				//lm1[j]=input[i];
+				//j++;
+				//i++;}
+				}
 			    
 			    	
 			   else if((input[i]=='-')&&(input[i+1]=='M')){
 				j=0;
 				i+=3;
-				while (input[i] != ' ') {
-				rm1[j]=input[i];
-				j++;
-				i++;}}
+				rm1=input[i];
+				i++;
+				if(input[i] != ' '){
+				rm1=rm1+input[i];
+				i++;}
+				//while (input[i] != ' ') {
+				//rm1[j]=input[i];
+				//j++;
+				//i++;}
+				}
 			    	
 			    
 			   else if((input[i]=='-')&&(input[i+1]=='g')){
 				j=0;
 				i+=3;
-				while (input[i] != ' ') {
-				ming1[j]=input[i];
-				j++;
-				i++;}}
+				ming1=input[i];
+				i++;
+				if(input[i] != ' '){
+				ming1=ming1+input[i];
+				i++;}
+				//while (input[i] != ' ') {
+				//ming1[j]=input[i];
+				//j++;
+				//i++;}
+				}
 			    
 			    	
 			   else if((input[i]=='-')&&(input[i+1]=='G')){
+				
 				j=0;
 				i+=3;
-				while (input[i] != ' ') {
-				maxg1[j]=input[i];
-				j++;
-				i++;}}
+				maxg1=input[i];
+				i++;
+				if(input[i] != ' '){
+				maxg1=maxg1+input[i];
+				i++;}
+				//while (input[i] != ' ') {
+				//maxg1[j]=input[i];
+				//j++;
+				//i++;}
+				}
 			    	
 			    
 			   else if((input[i]=='-')&&(input[i+1]=='t')){

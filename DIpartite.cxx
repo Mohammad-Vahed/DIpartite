@@ -75,12 +75,15 @@ class Computer {
 				i=i+3;
 				k3=i;
 				address.clear();
+				a=input[i];
+				i++;
 				while (input[i] != ' '){
-			    a[j]=input[i];
+			    a+=input[i];
 			    k1++;
 			    j++;
 			    i++;}
-			   address=input.substr(k3,k1);
+			   //address=input.substr(k3,k1);
+			   address=a;
 			   }
 			   k1=0;
 			   j=0;

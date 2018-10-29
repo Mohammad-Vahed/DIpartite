@@ -457,7 +457,7 @@ class Computer {
 											
 					 if (ch!='\n'){				
 					 cout << ch ;
-					 if(j<1000 and i<2000){
+					 if(j<2000 and i<2000){
 					 str4[i][j]=(ch);
                      j++;}
                     }

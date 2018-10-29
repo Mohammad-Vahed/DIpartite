@@ -109,40 +109,64 @@ class Computer {
 		i=0;
 		j=0;
 		
-		while(i <= x){
-			
-			   if((input[i]=='-')&&(input[i+1]=='f')){
+		if((input[i]=='-')&&(input[i+1]=='f')){
 				j=0;
 				i+=3;
-				while (input[i] != ' ') {
-				g1[j]=input[i];
-				j++;
-				i++;}}
+				g1=input[i];
+				i++;
+				if(input[i] != ' '){
+				g1=g1+input[i];
+				i++;}
+				//while (input[i] != ' ') {
+				//lm1[j]=input[i];
+				//j++;
+				//i++;}
+				}
 			
 				
 			   else if((input[i]=='-')&&(input[i+1]=='n')){
-				j=0;   
+				j=0;
 				i+=3;
-				while (input[i] != ' ') {
-				md1[j]=input[i];
-				j++;
-				i++;}}
+				md1=input[i];
+				i++;
+				if(input[i] != ' '){
+				md1=md1+input[i];
+				i++;}
+				//while (input[i] != ' ') {
+				//lm1[j]=input[i];
+				//j++;
+				//i++;}
+				}
 				
 			
 				
 			   else if((input[i]=='-')&&(input[i+1]=='p')){
+				j=0;
 				i+=3;
-				while (input[i] != ' ') {
-				p1[j]=input[i];
-				j++;
-				i++;}}
+				p1=input[i];
+				i++;
+				if(input[i] != ' '){
+				p1=p1+input[i];
+				i++;}
+				//while (input[i] != ' ') {
+				//lm1[j]=input[i];
+				//j++;
+				//i++;}
+				}
 				
 				else if((input[i]=='-')&&(input[i+1]=='s')){
+				j=0;
 				i+=3;
-				while (input[i] != ' ') {
-				s1[j]=input[i];
-				j++;
-				i++;}}
+				s1=input[i];
+				i++;
+				if(input[i] != ' '){
+				s1=s1+input[i];
+				i++;}
+				//while (input[i] != ' ') {
+				//lm1[j]=input[i];
+				//j++;
+				//i++;}
+				}
                 
 				
 			    else if((input[i]=='-')&&(input[i+1]=='m')){

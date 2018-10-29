@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <sstream>
 #include <stdio.h>
@@ -44,7 +43,7 @@ class Computer {
 		rm1="6";
 		ming1="0";
 		maxg1="0";
-		s1="1";	
+		s1="1";
 		//getline(cin,input);
 		input=input+' ';
 			
@@ -137,16 +136,15 @@ class Computer {
 				p1[j]=input[i];
 				j++;
 				i++;}}
-                      
-			
-			else if((input[i]=='-')&&(input[i+1]=='s')){
+				
+				else if((input[i]=='-')&&(input[i+1]=='s')){
 				i+=3;
 				while (input[i] != ' ') {
 				s1[j]=input[i];
 				j++;
 				i++;}}
-			
-			
+                
+				
 			    else if((input[i]=='-')&&(input[i+1]=='m')){
 				j=0;
 				i+=3;
@@ -289,8 +287,8 @@ class Computer {
 	      {cout<<"\n Please input just number 1 (Positive direction) or 2 (Positive and Negative direction) for pattern:"; 
 	      cin>>p;}
 	     }
-			
-	   while(f9==false){
+	     
+	     while(f9==false){
 	  
 	     if(s==1 || s==2) 
 	      f9=true;
@@ -1480,7 +1478,7 @@ class Computer {
 		 
 	}
 		
-	void secondmotif(){
+		void secondmotif(){
 			
 			//int k5,j3,i3,a1,l3=0;
                //int scoremotif1[max];
@@ -1660,7 +1658,7 @@ class Computer {
 			
 			
 			
-		}	
+		}
 		
 		 
                 //std::vector<int> lenstr2;
@@ -1727,7 +1725,7 @@ int main(int argc, char *argv[])
 	computer_one.step21();
 	
 	
-	
+	//computer_one.secondmotif();
 	
 	
 	

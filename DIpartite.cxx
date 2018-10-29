@@ -27,10 +27,10 @@ class Computer {
            input=address2;
     
 			int k1,k2,k3;
-			bool f,f1,f2,f3,f4,f5,f6,f7,f8;
+			bool f,f1,f2,f3,f4,f5,f6,f7,f8,f9;
 			f=f1=f2=f3=f4=f5=f6=f7=f8=false;
 			
-			string md1,p1,lm1,rm1,ming1,maxg1,t1,output,a,b;
+			string md1,p1,lm1,rm1,ming1,maxg1,t1,output,a,b,s1;
 			
 	   
 		
@@ -44,6 +44,7 @@ class Computer {
 		rm1="6";
 		ming1="0";
 		maxg1="0";
+		s1="1";	
 		//getline(cin,input);
 		input=input+' ';
 			
@@ -136,8 +137,16 @@ class Computer {
 				p1[j]=input[i];
 				j++;
 				i++;}}
-                
-				
+                      
+			
+			else if((input[i]=='-')&&(input[i+1]=='s')){
+				i+=3;
+				while (input[i] != ' ') {
+				s1[j]=input[i];
+				j++;
+				i++;}}
+			
+			
 			    else if((input[i]=='-')&&(input[i+1]=='m')){
 				j=0;
 				i+=3;
@@ -215,6 +224,7 @@ class Computer {
 	
 	g=atoi(g1.c_str());
 	p=atoi(p1.c_str());
+	s=atoi(s1.c_str());
 	md=atoi(md1.c_str());
 	lml=atoi(lm1.c_str());
 	rml=atoi(rm1.c_str());
@@ -272,6 +282,15 @@ class Computer {
 	     else
 	      {cout<<"\n Please input just number 1 (Positive direction) or 2 (Positive and Negative direction) for pattern:"; 
 	      cin>>p;}
+	     }
+			
+	   while(f9==false){
+	  
+	     if(s==1 || s==2) 
+	      f9=true;
+	     else
+	      {cout<<"\n Please input just number 1 for one occurrence motif site per sequence, or 2 for any number of repetitions of motifs:"; 
+	      cin>>s;}
 	     }
        
         while(f1==false){    
@@ -1449,7 +1468,9 @@ class Computer {
 				      cout<<"\n";
 				}
 		
-		
+		if(s==2){
+		secondmotif();	
+		}
 		 
 	}
 		
@@ -1639,7 +1660,7 @@ class Computer {
                 //std::vector<int> lenstr2;
                 
 		        char ch,str2[1000][100],str3[1000][100],str4[2000][100],str5[1000][100],state[1000][100],state2[1000][100];
-	            int i , i1,j,k1,k2,k,l,l2,md,nu,lms,tf,p,rnd,rnd1,rnd2,rnd3,nmax,min,max,ming,maxg,x,A,B,C,D,a,b,r,ns,g,z,lml,rml,lm;
+	            int i , i1,j,k1,k2,k,l,l2,md,nu,lms,tf,p,rnd,rnd1,rnd2,rnd3,nmax,min,max,ming,maxg,x,A,B,C,D,a,b,r,ns,g,z,lml,rml,lm,s;
 	            int selseq,initial,lenstr2[1000],freq[16][50],rndnuml[1000][100],rndnumr[1000][100],rndnuml2[1000][100],rndnumr2[1000][100],initialmotif[1000][2],sigb[1000][2];
 	            int temp_e[1000],positionl[1000][2],positionr[1000][2];
 	            float freq1[16][50],freq2[4][50],score1[1000],score2[1000][2];

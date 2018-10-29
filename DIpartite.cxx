@@ -67,6 +67,7 @@ class Computer {
 				cout<<"-f 1 for fasta file, or 2 for text file (no header) (default 1)"<<"\n";
 				cout<<"-p 1 for the given strand, or 2 for both the given and reverse complement strands (default 1)"<<"\n";
 				cout<<"-n 1 for PWM, or 2 for DWM (default 1)"<<"\n";
+				cout<<"-s 1 for one occurrence motif site per sequence, or 2 for any number of repetitions (default 1)"<<"\n";
 				cout<<"----------------------------------------------------------------------------------------------------"<<"\n";
 			exit(0);
 			}
@@ -1452,7 +1453,187 @@ class Computer {
 		 
 	}
 		
-		
+	void secondmotif(){
+			
+			//int k5,j3,i3,a1,l3=0;
+               //int scoremotif1[max];
+                char match[100];
+                int scoremotif2[1000][1000];
+                //string secmotif[1000][2000];
+                int a1;
+
+                cout<<"\n---------------------------New motifs discovery position------------------------------\n";
+                md=1;
+                da[0]="A"; da[1]="C"; da[2]="G"; da[3]="T";
+               count_nucleotide(finalmotif);
+               /*
+               for(i=0 ; i<nu ; i++){
+					  cout<<da[i]<<"\t";
+				      for(j=0 ; j<(lm) ; j++)
+				          cout<<freq[i][j]<<"\t";
+				      cout<<"\n";
+				}
+                */
+                for (i = 0; i < lms; i++)
+                {
+                    k = freq[0][i];
+                    l = 0;
+                    for (j = 0; j < nu; j++)
+                    {                       
+                        if (freq[j][i] > k)
+                        {
+                            x = freq[j][i];
+                            l = j;
+                        }
+
+                    }
+                
+                    if (l == 0)
+                    {
+                        match[i] = 'A';
+                    }
+                    else if (l == 1)
+                    {
+                        match[i] = 'C';
+                    }
+                    else if (l == 2)
+                    {
+                        match[i] = 'G';
+                    }
+                    else if (l == 3)
+                    {
+                        match[i] = 'T';
+                    }
+				
+                }
+                
+                cout<<"The best match of sequences for motif detection:\n\t";
+                for (i = 0; i <lms; i++)
+                    cout<<match[i]<<"\t";
+                cout<<"\n";
+                
+
+                for(i=0; i<max; i++)
+                {
+					temp_e[i]=0;
+                    for(j=0; j<lm; j++)
+                    {
+						subnuc="";
+                        for(k=0; k<nu; k++)
+                        {
+							subnuc=finalmotif[i][j];
+							if(md==2)
+							subnuc=subnuc+finalmotif[i][j];
+							
+                            if (subnuc== da[k])
+                            {
+                                temp_e[i] += freq[k][j];
+                                
+                            }
+                        }
+                    }
+                    if (i == 0)
+                    {
+                        l2 = 0;
+                        min = temp_e[0];
+                    }
+
+                    if(min > temp_e[i])
+                    {
+                        min = temp_e[i];
+                        l2 = i;
+                    }
+
+                    //cout<< i << ":" << temp_e[i] << "\n";
+                }
+                //cout<< "\n Minimum:" << min<<"\n";
+                //cout<< "Min:" << l2 << "-" << temp_e[l2];
+                //cout<< "\n";
+                    subnuc="";
+                for (i=0; i<max; i++)
+                {
+                    
+                            {
+                                
+                                a = 0;
+                                a1 = 0;
+                                for (i1 = ming; i1 <= maxg; i1++)
+                                {
+
+                                    for (l = 0; l < (lenstr2[i] - lms - i1); l++)
+                                    {
+                                        scoremotif2[i][l] = 0;
+                                        k = 0;
+                                        if ( l > (initialmotif[i][1] + rml) || l< (initialmotif[i][0]-lms-i1))
+                                        {
+											subnuc="";
+                                            for (j = 0; j < lms; j++)
+                                            {
+                                                if (j < lml)
+                                                {
+                                                    seq2[a][j] = str2[i][l + j];
+                                                    for (k2 = 0; k2 < nu; k2++)
+                                                    {
+														subnuc=seq2[a][j];
+														if(md==2)
+							                            subnuc=subnuc+seq2[a][j];
+							                            
+                                                        if (subnuc == da[k2])
+                                                        {
+                                                            scoremotif2[i][l] += freq[k2][j];
+                                                        }
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    seq2[a][j] = str2[i][l + j + i1];
+                                                    for (k2 = 0; k2 < nu; k2++)
+                                                    {
+														subnuc=seq2[a][j];
+														if(md==2)
+							                            subnuc=subnuc+seq2[a][j];
+							                            
+                                                        if (subnuc == da[k2])
+                                                        {
+                                                            scoremotif2[i][l] += freq[k2][j];
+                                                        }
+                                                    }
+                                                }
+
+                                               //cout<< seq2[a][j];
+                                               //secmotif[i][a1] += seq2[a][j];
+                                               //subnuc1 = subnuc1+seq2[a][j];
+                                            }
+                                            subnuc1 =seq2[a];
+
+                                            //cout<< " - " << scoremotif2[i][l] << "\n";
+                                            //cout<< " - " << subnuc << "\n";
+
+                                            if (min <= scoremotif2[i][l])
+                                            {
+												x=l+1+i1+lml;
+												if(g1=="1")
+				                                   for(A=0 ; str5[i][A] !='\n' ; A++)
+				                                       cout<<str5[i][A];
+				                                    else				                                       
+                                                      cout<<"Site:" << (i) ;
+                                                
+                                                cout<< "\tLeft Position:" << (l)<<", Right Position:"<<(x) << " - " << subnuc1 << "\n";
+                                                
+                                                subnuc1="";
+                                            }
+                                           a1++;
+                                           a++; 
+                                        }   
+                                    }
+
+                        }
+                    }
+                }
+			
+			
+			
+		}	
 		
 		 
                 //std::vector<int> lenstr2;

@@ -28,7 +28,7 @@ class Computer {
     
 			int k1,k2,k3;
 			bool f,f1,f2,f3,f4,f5,f6,f7,f8,f9;
-			f=f1=f2=f3=f4=f5=f6=f7=f8=false;
+			f=f1=f2=f3=f4=f5=f6=f7=f8=f9=false;
 			
 			string md1,p1,lm1,rm1,ming1,maxg1,t1,output,a,b,s1;
 			
@@ -211,10 +211,16 @@ class Computer {
 			   else if((input[i]=='-')&&(input[i+1]=='t')){
 				j=0;
 				i+=3;
-				while (input[i] != ' ') {
-				t1[j]=input[i];
-				j++;
-				i++;}}
+				t1=input[i];
+				i++;
+				if(input[i] != ' '){
+				t1=t1+input[i];
+				i++;}
+				//while (input[i] != ' ') {
+				//t1[j]=input[i];
+				//j++;
+				//i++;}
+				}
 				
 				
 				else	

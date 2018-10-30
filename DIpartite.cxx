@@ -1508,32 +1508,31 @@ class Computer {
 			//int k5,j3,i3,a1,l3=0;
                //int scoremotif1[max];
                 char match[100];
-                int scoremotif2[1000][1000];
+               int scoremotif2[1000][200];
                 //string secmotif[1000][2000];
-                int a1;
+                
 
                 cout<<"\n---------------------------New motifs discovery position------------------------------\n";
                 md=1;
+                nu=4;
+                lm=lms;
                 da[0]="A"; da[1]="C"; da[2]="G"; da[3]="T";
                count_nucleotide(finalmotif);
-               /*
-               for(i=0 ; i<nu ; i++){
-					  cout<<da[i]<<"\t";
-				      for(j=0 ; j<(lm) ; j++)
-				          cout<<freq[i][j]<<"\t";
-				      cout<<"\n";
-				}
-                */
+               
+               
+                
                 for (i = 0; i < lms; i++)
                 {
-                    k = freq[0][i];
+					
+                    k = 0;
                     l = 0;
                     for (j = 0; j < nu; j++)
                     {                       
                         if (freq[j][i] > k)
                         {
-                            x = freq[j][i];
+                            k = freq[j][i];
                             l = j;
+                            
                         }
 
                     }
@@ -1597,7 +1596,7 @@ class Computer {
                     //cout<< i << ":" << temp_e[i] << "\n";
                 }
                 //cout<< "\n Minimum:" << min<<"\n";
-                //cout<< "Min:" << l2 << "-" << temp_e[l2];
+               //cout<< "Min:" << l2 << "-" << temp_e[l2];
                 //cout<< "\n";
                     subnuc="";
                 for (i=0; i<max; i++)
@@ -1606,7 +1605,7 @@ class Computer {
                             {
                                 
                                 a = 0;
-                                a1 = 0;
+                                
                                 for (i1 = ming; i1 <= maxg; i1++)
                                 {
 
@@ -1614,10 +1613,10 @@ class Computer {
                                     {
                                         scoremotif2[i][l] = 0;
                                         k = 0;
-                                        if ( l > (initialmotif[i][1] + rml) || l< (initialmotif[i][0]-lms-i1))
+                                       if ( l > (initialmotif[i][1] + rml) || l< (initialmotif[i][0]-lms-i1))
                                         {
 											subnuc="";
-                                            for (j = 0; j < lms; j++)
+                                             for (j = 0; j < lms; j++)
                                             {
                                                 if (j < lml)
                                                 {
@@ -1671,10 +1670,10 @@ class Computer {
                                                 cout<< "\tLeft Position:" << (l)<<", Right Position:"<<(x) << " - " << subnuc1 << "\n";
                                                 
                                                 subnuc1="";
-                                            }
-                                           a1++;
+                                            } 
+                                           
                                            a++; 
-                                        }   
+                                        }  
                                     }
 
                         }
@@ -1688,13 +1687,13 @@ class Computer {
 		 
                 //std::vector<int> lenstr2;
                 
-		        char ch,str2[1000][100],str3[1000][100],str4[2000][100],str5[1000][100],state[1000][100],state2[1000][100];
+		        char ch,str2[1000][1000],str3[1000][1000],str4[2000][1000],str5[1000][1000],state[1000][100],state2[1000][100];
 	            int i , i1,j,k1,k2,k,l,l2,md,nu,lms,tf,p,rnd,rnd1,rnd2,rnd3,nmax,min,max,ming,maxg,x,A,B,C,D,a,b,r,ns,g,z,lml,rml,lm,s;
 	            int selseq,initial,lenstr2[1000],freq[16][50],rndnuml[1000][100],rndnumr[1000][100],rndnuml2[1000][100],rndnumr2[1000][100],initialmotif[1000][2],sigb[1000][2];
 	            int temp_e[1000],positionl[1000][2],positionr[1000][2];
 	            float freq1[16][50],freq2[4][50],score1[1000],score2[1000][2];
 	            float BG[16],BG2[16],entropytotal[100][2],entropy[50],minentropy[100],testi[100];
-	            float pe[374][30],rndsel,sum,sum2,sum3,t,div,div1[2],maxscor[2],maxsum[500][2];
+	            float rndsel,sum,sum2,sum3,t,div,div1[2],maxscor[2],maxsum[500][2];
 	            string subnuc,subnuc1;
 	            bool flag,bb;
                 char line,finalmotif[1000][50],strmotif[1000][50],seq1[1000][50],seq5[1000][50],seq2[1000][50],seq4[1000][50],ran1[1000][50];

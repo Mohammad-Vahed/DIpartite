@@ -109,6 +109,7 @@ class Computer {
 		i=0;
 		j=0;
 		
+	while(i <= x){
 		if((input[i]=='-')&&(input[i+1]=='f')){
 				j=0;
 				i+=3;

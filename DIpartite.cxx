@@ -459,7 +459,7 @@ class Computer {
 					 if (ch!='\n'){				
 					 cout << ch ;
 					 if(j<2000 and i<2000){
-					 str4[i][j]=(ch);
+					 str4[i][j]=toupper(ch);
                      j++;}
                     }
                      else{
@@ -470,12 +470,13 @@ class Computer {
 						i1++;
 						}
 						else if(g==1){
-					    if(flag==true){
+					    
 						lenstr2[i1]=j; 
-						cout<<'\t'<<lenstr2[i1];
+						if(flag==true)
+						//cout<<'\t'<<lenstr2[i1];
 						sum=sum+lenstr2[i1];
 						i1++;
-						}
+						
 						
 					}
 					
@@ -493,16 +494,40 @@ class Computer {
               
               myfile4.close();
 		  }
+		  cout<<'\n';
+		  max2=i;
+		  max=i;
+		  k=0;
+		  y=0;
+		  if(g==1){
+		  i=1;
+		  while(i<i1){
+			  if(str4[i][0] != '>'){
+			  		    for(j=0; j<lenstr2[i]; j++)
+							{
+								if(str4[i][j]!='A' || str4[i][j]!='C' || str4[i][j]!='G' || str4[i][j]!='T')
+		                        //cout<<str4[i][j];
+		                        str2[k][y]=str4[i][j];
+		                        y++;
+		                   }}
+		       if ((str4[i][0] == '>')||(i+1==i1)){
+		         
+		        lenstr2[k]=y;
+		        k++;
+		        	        
+		        y=0;
+		      }   
+			   i++;	       
+		   }
+		   max=k;
+		  }
 		  
-		  if(g==1)
-		   max=i/2;
-		  else
-			 max=i;
 			 
 		 // cout<<'\n'<<"Number of sequence:"<<max<<"  Number of line:"<<max<<'\n';
 		   
 		  
 		  i1=0;
+		  /*
 		  if(g==1){
 		  for(j=1 ; j<(max*2) ; j+=2){
 			  flag=true;
@@ -522,7 +547,8 @@ class Computer {
 		        i1++;
 		       }
 		       }
-		       else if(g==2){
+		       else */
+		      if(g==2){
 		       for(j=0 ; j<max ; j++){
 			  flag=true;
 			  x=0;
@@ -557,15 +583,16 @@ class Computer {
 		 }
 		  sum=0;
 		  g=0;
+		  k=0;
           // printf("\n--------------------------------------------------------------------\n");
-                for(i=0 ; i<(max*2) ; i++)
-                if(i % 2 ==0){
-					k=i/2;
+                for(i=0 ; i<(max2) ; i++)
+                if(str4[i][0] =='>'){
+					
                 for(j=0 ; str4[i][j] !='\0' ; j++){
                 str5[k][j]=str4[i][j];
-                //cout<<str5[k][j];
-                }
                 
+                }
+                k++;
                 }
              
                 
@@ -1688,7 +1715,7 @@ class Computer {
                 //std::vector<int> lenstr2;
                 
 		        char ch,str2[1000][1000],str3[1000][1000],str4[2000][1000],str5[1000][1000],state[1000][100],state2[1000][100];
-	            int i , i1,j,k1,k2,k,l,l2,md,nu,lms,tf,p,rnd,rnd1,rnd2,rnd3,nmax,min,max,ming,maxg,x,A,B,C,D,a,b,r,ns,g,z,lml,rml,lm,s;
+	            int i , i1,j,k1,k2,k,l,l2,md,nu,lms,tf,p,rnd,rnd1,rnd2,rnd3,nmax,min,max,max2,ming,maxg,x,y,A,B,C,D,a,b,r,ns,g,z,lml,rml,lm,s;
 	            int selseq,initial,lenstr2[1000],freq[16][50],rndnuml[1000][100],rndnumr[1000][100],rndnuml2[1000][100],rndnumr2[1000][100],initialmotif[1000][2],sigb[1000][2];
 	            int temp_e[1000],positionl[1000][2],positionr[1000][2];
 	            float freq1[16][50],freq2[4][50],score1[1000],score2[1000][2];

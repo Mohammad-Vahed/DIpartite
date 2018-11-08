@@ -505,7 +505,7 @@ class Computer {
 			  if(str4[i][0] != '>'){
 			  		    for(j=0; j<lenstr2[i]; j++)
 							{
-								if(str4[i][j]!='A' || str4[i][j]!='C' || str4[i][j]!='G' || str4[i][j]!='T')
+								if(str4[i][j]=='A' || str4[i][j]=='C' || str4[i][j]=='G' || str4[i][j]=='T')
 		                        //cout<<str4[i][j];
 		                        str2[k][y]=str4[i][j];
 		                        y++;

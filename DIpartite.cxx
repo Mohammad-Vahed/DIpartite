@@ -459,7 +459,7 @@ class Computer {
 					 if (ch!='\n'){				
 					 cout << ch ;
 					 if(j<2000 and i<2000){
-					 str4[i][j]=toupper(ch);
+					 str4[i][j]=(ch);
                      j++;}
                     }
                      else{

@@ -505,7 +505,8 @@ class Computer {
 			  if(str4[i][0] != '>'){
 			  		    for(j=0; j<lenstr2[i]; j++)
 							{
-								if(str4[i][j]=='A' || str4[i][j]=='C' || str4[i][j]=='G' || str4[i][j]=='T')
+					str4[i][j]=toupper(str4[i][j]);
+					if(str4[i][j]=='A' || str4[i][j]=='C' || str4[i][j]=='G' || str4[i][j]=='T')
 		                        //cout<<str4[i][j];
 		                        str2[k][y]=str4[i][j];
 		                        y++;
@@ -554,7 +555,8 @@ class Computer {
 			  x=0;
 				 ns++;
 		      for(k=0 ; k<lenstr2[i1] ; k++) {
-		        str2[i1][k]=str4[j][k];
+			      str4[j][k]=toupper(str4[j][k]);
+		              str2[i1][k]=str4[j][k];
 				 if (((str2[i1][k]=='A')||(str2[i1][k]=='C')||(str2[i1][k]=='G')||(str2[i1][k]=='T'))){
 					 x++;
 				 if(flag==true){

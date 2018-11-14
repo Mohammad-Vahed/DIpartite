@@ -1713,16 +1713,16 @@ class Computer {
 		
 		 
                 //std::vector<int> lenstr2;
-                char ch,str2[1000][1000],str3[1000][1000],str4[2000][1000],str5[1000][1000],state[1000][100],state2[1000][100];
+               char ch,str2[1000][1000],str3[1000][1000],str4[2000][1000],str5[1000][1000],state[1000][100],state2[1000][100];
 	            int i , i1,j,k1,k2,k,l,l2,md,nu,lms,tf,p,rnd,rnd1,rnd2,rnd3,nmax,min,max,max2,ming,maxg,x,y,A,B,C,D,a,b,r,ns,g,z,lml,rml,lm,s;
 	            int selseq,initial,lenstr2[1000],freq[16][50],rndnuml[1000][100],rndnumr[1000][100],rndnuml2[1000][100],rndnumr2[1000][100],initialmotif[1000][2],sigb[1000][2];
-	            int temp_e[1000],positionl[15000][2],positionr[15000][2];
-	            float freq1[16][50],freq2[4][50],score1[15000],score2[4000][2];
+	            int temp_e[1000],positionl[10000][2],positionr[10000][2];
+	            float freq1[16][50],freq2[4][50],score1[10000],score2[10000][2];
 	            float BG[16],BG2[16],entropytotal[100][2],entropy[50],minentropy[100],testi[100];
 	            float rndsel,sum,sum2,sum3,t,div,div1[2],maxscor[2],maxsum[500][2];
 	            string subnuc,subnuc1;
 	            bool flag,bb;
-                char line,finalmotif[1000][50],strmotif[1000][50],seq1[1000][50],seq5[1000][50],seq2[15000][50],seq4[4000][50],ran1[1000][50];
+                char line,finalmotif[1000][50],strmotif[1000][50],seq1[1000][50],seq5[1000][50],seq2[10000][50],seq4[10000][50],ran1[1000][50];
                 string da[16];
                 string g1,seq,temp,temp2,temp3,address,input;
                 ifstream myfile1,myfile2,myfile3,myfile4;

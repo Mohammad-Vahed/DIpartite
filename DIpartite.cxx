@@ -86,19 +86,21 @@ class Computer {
 			   //address=input.substr(k3,k1);
 			   address=a;
 			   }
-			   k1=0;
+			    k1=0;
 			   j=0;
 			   if((input[i]=='-')&&(input[i+1]=='o')){
 				i=i+3;
 				output.clear();
 				k3=i;
+				b=input[i];
+				i++;
 				while (input[i] != ' '){
-			    b[j]=input[i];
+			    b+=input[i];
 			    k1++;
 			    j++;
 			    i++;
 			   }
-			   output=input.substr(k3,k1);
+			   output=b;
 		}
 	}
 		

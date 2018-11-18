@@ -377,6 +377,8 @@ class Computer {
            cin>>tf;
 		 }}
 		 
+		 
+		 
 		 cout<<"\n\t\t\t Please waiting...\n";
 		 
 		 //o="/home/mohammad/Documents/test1.txt";
@@ -505,8 +507,8 @@ class Computer {
 			  if(str4[i][0] != '>'){
 			  		    for(j=0; j<lenstr2[i]; j++)
 							{
-					str4[i][j]=toupper(str4[i][j]);
-					if(str4[i][j]=='A' || str4[i][j]=='C' || str4[i][j]=='G' || str4[i][j]=='T')
+								str4[i][j]=toupper(str4[i][j]);
+								if(str4[i][j]=='A' || str4[i][j]=='C' || str4[i][j]=='G' || str4[i][j]=='T')
 		                        //cout<<str4[i][j];
 		                        str2[k][y]=str4[i][j];
 		                        y++;
@@ -555,8 +557,8 @@ class Computer {
 			  x=0;
 				 ns++;
 		      for(k=0 ; k<lenstr2[i1] ; k++) {
-			      str4[j][k]=toupper(str4[j][k]);
-		              str2[i1][k]=str4[j][k];
+				  str4[j][k]=toupper(str4[j][k]);
+		        str2[i1][k]=str4[j][k];
 				 if (((str2[i1][k]=='A')||(str2[i1][k]=='C')||(str2[i1][k]=='G')||(str2[i1][k]=='T'))){
 					 x++;
 				 if(flag==true){
@@ -597,6 +599,8 @@ class Computer {
                 k++;
                 }
              
+            
+			
                 
                 	}
 		//--------------------------------------------------------------	
@@ -618,16 +622,20 @@ class Computer {
 				 
 				 k++;
 		}
+		
+			
+	
+			
 	}
-	 
-	 /*  cout<<"\n----------REVERSE------------------\n";
+	 /*
+	   cout<<"\n----------REVERSE------------------\n";
 			for(i=0 ; i<max ; i++) {
 				cout<<">"<<i+1<<'\n';
-				for(j=0 ; j<lenstr2[i] ; j++)
-					cout<<str3[i][j];
+				for(j=0 ; j<lenstr2[i] ; j++){
+					cout<<str3[i][j];}
 					cout<<'\n';
-				}*/
-			 
+				}
+			 */
 		 } 
 	    //--------------------------------------------------------------  	     
 	     void selectrandom()
@@ -636,7 +644,7 @@ class Computer {
 			 srand((unsigned)time(NULL)*(r+x+1));
 			 			 		 
 			   for(i=0 ; i<max ; i++)
-			     rndnuml[i][r]=(rand() % (maxg+lm));
+			     rndnuml[i][r]=(rand() % (lenstr2[i]-maxg+lm-2));
 									 
 			   for(i=0 ; i<max ; i++){
 				   j=rndnuml[i][r]+maxg+lml;
@@ -646,8 +654,8 @@ class Computer {
 			     
 		  }
 		  
-		//  for(i=0 ; i<max ; i++)
-		//    cout<<rndnuml[i][r]<<":"<<rndnumr[i][r]<<" "<<rndnumr[i][r]-rndnuml[i][r]-4<<"\n";
+		 // for(i=0 ; i<max ; i++)
+		  //  cout<<rndnuml[i][r]<<":"<<rndnumr[i][r]<<" "<<rndnumr[i][r]-rndnuml[i][r]-4<<"\n";
 		  
 		 
 			 
@@ -957,7 +965,7 @@ class Computer {
 				}
 				
 				
-			 	 for(i=a ; i<1000 ; i++)
+			 	 for(i=a ; i<9000 ; i++)
 			 	   for(j=0 ; j<lms ; j++) 
 			 	     seq2[i][j]='\0';
 			      
@@ -1062,21 +1070,22 @@ class Computer {
 			         
 				}
 			 }
-			 	 
-			 	 for(i=a ; i<1000 ; i++)
+			 	/*
+			 	if(z==6) {
+			 	 for(i=a ; i<9000 ; i++)
 			 	   for(j=0 ; j<lms ; j++) 
 			 	     seq4[i][j]='\0';
 			      
-			/*
+			
 			 	 for (l=0 ; l<a ; l++){
 					 cout<<l<<":";
 			 	 for (j=0 ; j<lm ; j++)
 			 	 cout<<seq4[l][j];
 			 	 
-		 //	 cout<<"\t"<<" "<<positionl[l][1]<<","<<positionr[l][1]<<" : "<<positionr[l][0]-positionl[l][0]-lml;
+		  cout<<"\t"<<" "<<positionl[l][1]<<","<<positionr[l][1]<<" : "<<positionr[l][0]-positionl[l][0]-lml;
 		//	 	if (l%3==0)
 			 	 cout<<"\n";  
-			 	 
+			 }
 			 	 }	*/
 	       }
 	
@@ -1137,33 +1146,38 @@ class Computer {
 					}
 				
 				maxscor[0]=score2[0][0];
-				for(i=min ; i<a ; i++)
+				for(i=0 ; i<a ; i++){
 				 if(maxscor[0]>score2[i][0]){
 				     maxscor[0]=score2[i][0];
 				     k1=i;
-				 }
-				 maxsum[k1][0]=maxscor[0];
+				 }}
+				 
 				 
 				 maxscor[1]=score2[0][1];
-				for(i=min ; i<a ; i++)
+				for(i=0 ; i<a ; i++){
 				 if(maxscor[1]>score2[i][1]){
 				     maxscor[1]=score2[i][1];
 				     k2=i;
-				 }
-				 maxsum[k1][1]=maxscor[1];
+				 }}
+				 
 				 
 			//	cout<<"\nMaximume Value Number:"<<score1[k1][0]<<"\t"<<score1[k2][1]<<"\n";
-		 // if (maxscor[0]<maxscor[1])
-		  //{
+		  if (maxscor[0]<maxscor[1])
+		  {
 				rndnuml[z][r]=positionl[k1][0];
 				rndnumr[z][r]=positionr[k1][0];
 				state[z][r]='P';
-			//}
-			//else{
-				rndnuml2[z][r]=positionl[k2][1];
-				rndnumr2[z][r]=positionr[k2][1];
-				state2[z][r]='N';
-			//}
+			}
+			else{
+				rndnuml[z][r]=positionl[k2][1];
+				
+				rndnumr[z][r]=positionr[k2][1];
+								
+				state[z][r]='N';
+			}
+			//for(i=0; i<max; i++)	
+		    //cout<<i<<"*"<<rndnuml[i][r]<<"\t"<<rndnumr[i][r]<<"\n"; 
+			
 		}
 			 
 			 //---------------------------------------------------------
@@ -1177,43 +1191,7 @@ class Computer {
 			 }
 		
 			 
-	//--------------------------------------------------------------------		 
-			void randomly(){ 
-			
-			
-			for(j=0 ; j<150 ; j++)	
-			score1[j]=0;	
-					 						
-					 
-	//		  cout<<"Select Random:"<<rndsel<<"\n";
-			  
-			  
-			  
-			  for(j=min ; j<a ; j++){
-				  
-			  if (rndsel > score1[j] and rndsel <= score1[j+1] )
-			  score1[j]++;
-			  
-			  if(rndsel==0)
-			  score1[0]++;
-			  
-			  }
-			  
-			  	  
-		//	  cout<<"\n";
-			  
-			  maxscor[0]=score1[0];
-			  for(j=min ; j<a ; j++){
-			  
-			   if(maxscor[0]<score1[j]){
-						     maxscor[0]=score1[j];
-						     rndnuml[z][r]=positionl[j+1][0];
-						     rndnumr[z][r]=positionr[j+1][0];
-						     k=j+1;
-						     }
-						     }
-			
-					}	
+	
 						
 		//--------------------------------------------------------------
 		
@@ -1286,9 +1264,9 @@ class Computer {
 		//		cout<<"\nEntropy for each colum: -[i(1..n) Px*log(Px)]:\n";
 				for(i=0 ; i<(lm) ; i++){
 					entropy[i]=0;
-				   for(j=0 ; j<nu ; j++)
+				   for(j=0 ; j<nu ; j++){
 				     
-				      entropy[i]=entropy[i]+(freq1[j][i]*log2(freq1[j][i]));
+				      entropy[i]=entropy[i]+(freq1[j][i]*log2(freq1[j][i]));}
 				    				     
 				      entropy[i]=entropy[i]*(-1);
 	//		      printf("%.4f  ", entropy[i]);
@@ -1339,13 +1317,6 @@ class Computer {
 			
 		}
 		
-		for (i=0 ; i<max ; i++)
-		  if(maxsum[i][0]>maxsum[i][1]){
-		  rndnuml[i][r]=rndnuml2[i][r];
-		  rndnumr[i][r]=rndnumr2[i][r];
-		  state[i][r]='N';
-		  	  }
-		  
 		  
 	//	cout<<"\n";
 		PFM();
@@ -1412,6 +1383,15 @@ class Computer {
 		}
 		//--------------------------------------------------------------	
 		void step21(){
+			 k=lml+rml+maxg;
+             	
+	for(i=0; i<max; i++){
+             if(k>(lenstr2[i]-2)){
+				
+			cout<<"ERROR: Length of the site "<<i+1<<" is less than your input parameters(Left Motif + Right Motif + Gap).\n";
+			 
+			 exit (EXIT_FAILURE);
+			 }}
 			
 			for(i1=0 ; i1<tf ; i1++){
 		//cout<<"\n----------------------------------------------------------------------\n";	
@@ -1421,6 +1401,8 @@ class Computer {
 	    step11();
 	    
 	       // cout<<"\n##########NEW Genrate for Calculate to find motif of Step: "<<r+2<<"  ############\n" ;   
+	       
+		 
 	        r++;
 	        b=1;
 	    	selectrandom();
@@ -1430,8 +1412,7 @@ class Computer {
               
                  
              cout<<"\n-----------------------------------------\n";
-			
-		  		 
+				 
 	
 		
 		sum=testi[0];
@@ -1469,14 +1450,14 @@ class Computer {
 		     for(j=initialmotif[i][0] ; j<initialmotif[i][0]+lml ; j++){
 		          if(state[i][0]=='P')
 		          finalmotif[i][k]=str2[i][j];
-		          else
+		          else if(state[i][0]=='N')
 		          finalmotif[i][k]=str3[i][j];
 		          k++;
 			  }
 			  for(j=initialmotif[i][1] ; j<initialmotif[i][1]+rml ; j++){
 		         if(state[i][0]=='P')
 		          finalmotif[i][k]=str2[i][j];
-		          else
+		          else if(state[i][0]=='N')
 		          finalmotif[i][k]=str3[i][j];
 		          k++;
 			  }
@@ -1494,8 +1475,8 @@ class Computer {
 				cout<<"\t"<<"Direction: "<<state[i][0];
 				cout<<"\n";
 			
-			   for(j=0 ; j<lms ; j++)
-			        printf("%c",finalmotif[i][j]);
+			   for(j=0 ; j<lms ; j++){
+			        printf("%c",finalmotif[i][j]);}
 			        cout<<"\n";
 		} 
 			  
@@ -1709,22 +1690,23 @@ class Computer {
                     }
                 }
 			
-			
+			//exit: 
 			
 		}
 		
 		 
                 //std::vector<int> lenstr2;
-               char ch,str2[1000][1000],str3[1000][1000],str4[2000][1000],str5[1000][1000],state[1000][100],state2[1000][100];
+                
+		        char ch,str2[1000][1000],str3[1000][1000],str4[2000][1000],str5[1000][1000],state[1000][100];
 	            int i , i1,j,k1,k2,k,l,l2,md,nu,lms,tf,p,rnd,rnd1,rnd2,rnd3,nmax,min,max,max2,ming,maxg,x,y,A,B,C,D,a,b,r,ns,g,z,lml,rml,lm,s;
 	            int selseq,initial,lenstr2[1000],freq[16][50],rndnuml[1000][100],rndnumr[1000][100],rndnuml2[1000][100],rndnumr2[1000][100],initialmotif[1000][2],sigb[1000][2];
-	            int temp_e[1000],positionl[10000][2],positionr[10000][2];
-	            float freq1[16][50],freq2[4][50],score1[10000],score2[10000][2];
+	            int temp_e[1000],positionl[9000][2],positionr[9000][2];
+	            float freq1[16][50],freq2[4][50],score1[9000],score2[9000][2];
 	            float BG[16],BG2[16],entropytotal[100][2],entropy[50],minentropy[100],testi[100];
-	            float rndsel,sum,sum2,sum3,t,div,div1[2],maxscor[2],maxsum[500][2];
+	            float rndsel,sum,sum2,sum3,t,div,div1[2],maxscor[2];
 	            string subnuc,subnuc1;
 	            bool flag,bb;
-                char line,finalmotif[1000][50],strmotif[1000][50],seq1[1000][50],seq5[1000][50],seq2[10000][50],seq4[10000][50],ran1[1000][50];
+                char line,finalmotif[1000][50],strmotif[1000][50],seq1[1000][50],seq5[1000][50],seq2[9000][50],seq4[9000][50],ran1[1000][50];
                 string da[16];
                 string g1,seq,temp,temp2,temp3,address,input;
                 ifstream myfile1,myfile2,myfile3,myfile4;
@@ -1755,6 +1737,7 @@ int main(int argc, char *argv[])
 	computer_one.output_information();
 	
 	computer_one.textmining();
+ 
 	computer_one.reverse();
 	//computer_one.subseqlength3();
 	computer_one.selectrandom();
@@ -1766,7 +1749,7 @@ int main(int argc, char *argv[])
 	//computer_one.selectseq();
 	//computer_one.test();
 	//computer_one.score();
-	//computer_one.randomly();
+	
 	
 	//computer_one.step1();
 	//computer_one.step2();

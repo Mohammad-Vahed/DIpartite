@@ -1520,7 +1520,7 @@ class Computer {
 			//int k5,j3,i3,a1,l3=0;
                //int scoremotif1[max];
                 char match[100];
-               int scoremotif2[1000][200];
+               //int scoremotif2[1000][200];
                 //string secmotif[1000][2000];
                 
 
@@ -1623,7 +1623,7 @@ class Computer {
 
                                     for (l = 0; l < (lenstr2[i] - lms - i1); l++)
                                     {
-                                        scoremotif2[i][l] = 0;
+                                        scorem2[i][l] = 0;
                                         k = 0;
                                        if ( l > (initialmotif[i][1] + rml) || l< (initialmotif[i][0]-lms-i1))
                                         {
@@ -1635,13 +1635,13 @@ class Computer {
                                                     seq2[a][j] = str2[i][l + j];
                                                     for (k2 = 0; k2 < nu; k2++)
                                                     {
-														subnuc=seq2[a][j];
-														if(md==2)
-							                            subnuc=subnuc+seq2[a][j];
+								subnuc=seq2[a][j];
+								if(md==2)
+							        subnuc=subnuc+seq2[a][j];
 							                            
                                                         if (subnuc == da[k2])
                                                         {
-                                                            scoremotif2[i][l] += freq[k2][j];
+                                                            score2[i][l] += freq[k2][j];
                                                         }
                                                     }
                                                 }
@@ -1650,13 +1650,13 @@ class Computer {
                                                     seq2[a][j] = str2[i][l + j + i1];
                                                     for (k2 = 0; k2 < nu; k2++)
                                                     {
-														subnuc=seq2[a][j];
-														if(md==2)
-							                            subnuc=subnuc+seq2[a][j];
+								subnuc=seq2[a][j];
+								if(md==2)
+							        subnuc=subnuc+seq2[a][j];
 							                            
                                                         if (subnuc == da[k2])
                                                         {
-                                                            scoremotif2[i][l] += freq[k2][j];
+                                                            score2[i][l] += freq[k2][j];
                                                         }
                                                     }
                                                 }
@@ -1670,12 +1670,12 @@ class Computer {
                                             //cout<< " - " << scoremotif2[i][l] << "\n";
                                             //cout<< " - " << subnuc << "\n";
 
-                                            if (min <= scoremotif2[i][l])
+                                            if (min <= score2[i][l])
                                             {
-												x=l+1+i1+lml;
-												if(g1=="1")
-				                                   for(A=0 ; str5[i][A] !='\n' ; A++)
-				                                       cout<<str5[i][A];
+							x=l+1+i1+lml;
+							if(g1=="1")
+				                         for(A=0 ; str5[i][A] !='\n' ; A++)
+				                               cout<<str5[i][A];
 				                                    else				                                       
                                                       cout<<"Site:" << (i) ;
                                                 

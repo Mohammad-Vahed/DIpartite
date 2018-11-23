@@ -1164,17 +1164,15 @@ class Computer {
 				 
 				 
 			//	cout<<"\nMaximume Value Number:"<<score1[k1][0]<<"\t"<<score1[k2][1]<<"\n";
-		  if (maxscor[0]<maxscor[1])
-		  {
-				rndnuml[z][r]=positionl[k1][0];
+		                rndnuml[z][r]=positionl[k1][0];
 				rndnumr[z][r]=positionr[k1][0];
-				state[z][r]='P';
-			}
-			else{
-				rndnuml[z][r]=positionl[k2][1];
-				
-				rndnumr[z][r]=positionr[k2][1];
-								
+				state[z][r]='P';	
+				 
+			//	cout<<"\nMaximume Value Number:"<<score1[k1][0]<<"\t"<<score1[k2][1]<<"\n";
+		  if (maxscor[0]>maxscor[1])
+		  {
+				rndnuml[z][r]=positionl[k2][1];				
+				rndnumr[z][r]=positionr[k2][1];								
 				state[z][r]='N';
 			}
 			//for(i=0; i<max; i++)	

@@ -1072,13 +1072,13 @@ class Computer {
 			         
 				}
 			 }
-			 	/*
-			 	if(z==6) {
+			 	
+			 	//if(z==6) {
 			 	 for(i=a ; i<9000 ; i++)
 			 	   for(j=0 ; j<lms ; j++) 
 			 	     seq4[i][j]='\0';
 			      
-			
+			/*
 			 	 for (l=0 ; l<a ; l++){
 					 cout<<l<<":";
 			 	 for (j=0 ; j<lm ; j++)

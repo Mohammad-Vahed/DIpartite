@@ -1623,7 +1623,7 @@ class Computer {
 
                                     for (l = 0; l < (lenstr2[i] - lms - i1); l++)
                                     {
-                                        scorem2[i][l] = 0;
+                                        score2[i][l] = 0;
                                         k = 0;
                                        if ( l > (initialmotif[i][1] + rml) || l< (initialmotif[i][0]-lms-i1))
                                         {

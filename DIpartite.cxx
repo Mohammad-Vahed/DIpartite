@@ -1385,7 +1385,7 @@ class Computer {
 		void step21(){
 			 k=lml+rml+maxg;
              	
-	for(i=0; i<max; i++){
+	         for(i=0; i<max; i++){
              if(k>(lenstr2[i]-2)){
 				
 			cout<<"ERROR: Length of the site "<<i+1<<" is less than your input parameters(Left Motif + Right Motif + Gap).\n";

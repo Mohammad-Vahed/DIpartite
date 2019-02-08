@@ -646,7 +646,7 @@ class Computer {
 			 srand((unsigned)time(NULL)*(r+x+1));
 			 			 		 
 			   for(i=0 ; i<max ; i++)
-			     rndnuml[i][r]=(rand() % (lenstr2[i]-maxg+lm-2));
+			     rndnuml[i][r]=(rand() % (lenstr2[i]-maxg-lm-2));
 									 
 			   for(i=0 ; i<max ; i++){
 				   j=rndnuml[i][r]+maxg+lml;
@@ -944,7 +944,7 @@ class Computer {
 		  a=0;
 		  
 		    for(i=ming ; i<=maxg; i++){
-			    for(l=0 ; l<(lenstr2[z]-lms-i) ; l++){
+			    for(l=0 ; l<(lenstr2[z]-lms-i-3) ; l++){
 					k=0;
 					for(j=0 ; j<lms ; j++)
 					 {
@@ -1051,7 +1051,7 @@ class Computer {
 		a=0;
 		  
 		   for(i=ming ; i<=maxg; i++){
-			    for(l=0 ; l<(lenstr2[z]-lms-i) ; l++){
+			    for(l=0 ; l<(lenstr2[z]-lms-i-3) ; l++){
 					k=0;
 					for(j=0 ; j<lms ; j++)
 					 

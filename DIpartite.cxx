@@ -944,7 +944,7 @@ class Computer {
 		  a=0;
 		  
 		    for(i=ming ; i<=maxg; i++){
-			    for(l=0 ; l<(lenstr2[z]-lms-i-3) ; l++){
+			    for(l=0 ; l<(lenstr2[z]-lms-i-2) ; l++){
 					k=0;
 					for(j=0 ; j<lms ; j++)
 					 {
@@ -1051,7 +1051,7 @@ class Computer {
 		a=0;
 		  
 		   for(i=ming ; i<=maxg; i++){
-			    for(l=0 ; l<(lenstr2[z]-lms-i-3) ; l++){
+			    for(l=0 ; l<(lenstr2[z]-lms-i-2) ; l++){
 					k=0;
 					for(j=0 ; j<lms ; j++)
 					 

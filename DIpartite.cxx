@@ -317,10 +317,10 @@ class Computer {
 	     
 	     while(f9==false){
 	  
-	     if(s==1 || s==2) 
+	     if(s==1 || s==2 || s==3) 
 	      f9=true;
 	     else
-	      {cout<<"\n Please input just number 1 for one occurrence motif site per sequence, or 2 for any number of repetitions of motifs:"; 
+	      {cout<<"\n Please input just number 1 for one occurrence motif site per sequence, or 2 for any number of repetitions of motifs, or 3 for zero or one occurrence motif site per sequence:"; 
 	      cin>>s;}
 	     }
        
@@ -1426,11 +1426,15 @@ class Computer {
 		  }
 		  cout<<"\n";
 		}
-          cout<<"minentropy["<<l<<"]: "<<sum;          
+          cout<<"minentropy["<<l<<"]: "<<sum<<"\n";          
 		  
-		  cout<<"\n-----------------------------------------------------------------------------\n";
+		  if(s==1)
+		  cout<<"\n-------------------One Occurrence Per Sequence (oops) of Motifs-----------------\n";
+		  else if(s==2)
+		  cout<<"\n-------------------Any Number of Repetitions (anr) of Motifs-----------------\n";
+		  else if(s==3)
+		  cout<<"\n-------------------Zero or One Occurrence per Sequence (zoops) of Motifs-----------------\n";
 		  
-		   
                  
               	
 		cout<<"\n"<<"Start position of left motif:"<<"\t"<<"Start position of right motif:"<<"\n";
@@ -1439,11 +1443,14 @@ class Computer {
 			for(i=0 ; i<max ; i++){
 			  initialmotif[i][0]=rndnuml[i][l];
 			  initialmotif[i][1]=rndnumr[i][l];
+			  if(s != 3)
 			  cout<<initialmotif[i][0]<<" \t\t\t\t "<<initialmotif[i][1];
 			  state[i][0]=state[i][l];
+			  if(s != 3)
 			  cout<<"\n";
 		  }
 		   cout<<"\n";
+	   
 		  
 		  for(i=0 ; i<max ; i++){
 			k=0;
@@ -1463,6 +1470,89 @@ class Computer {
 			  }
 		  }
 		  
+		  if(s==3){
+			  
+			 		  
+			
+		   
+			    //md=1;
+                //int nu2=4;
+                //lm=lms;
+                string da2[4];
+                da2[0]="A"; da2[1]="C"; da2[2]="G"; da2[3]="T";
+               count_nucleotide(finalmotif);
+			  
+			  for (i = 0; i < lm; i++)
+                {
+					
+                    k = 0;
+                    l = 0;
+                    for (j = 0; j < nu; j++)
+                    {                       
+                        if (freq[j][i] > k)
+                        {
+                            k = freq[j][i];
+                            l = j;
+                            
+                        }
+
+                    }
+                    fsum=fsum+k;
+                }
+			  
+			  for(i=0; i<max; i++)
+                {
+					temp_e[i]=0;
+                    for(j=0; j<lms; j++)
+                    {
+						subnuc="";
+                        for(k=0; k<nu; k++)
+                        {
+							subnuc=finalmotif[i][j];
+							if(md==2)
+							subnuc=subnuc+finalmotif[i][j+1];
+							
+                            if (subnuc== da[k])
+                            {
+                                temp_e[i] += freq[k][j];
+                                
+                            }
+                        }
+                    }}
+                    fsum=fsum/4*3;
+                    
+                    for(i=0 ; i<max ; i++){	
+						  if(temp_e[i]<(fsum))
+					      cout<<"N/A \t\t\t\t N/A\n";
+					      else{		  
+			             cout<<initialmotif[i][0]<<" \t\t\t\t "<<initialmotif[i][1];			  
+			             cout<<"\n";}
+		                  }
+		                cout<<"\n";
+                    
+                    
+                for (i=0; i<max; i++)
+                {
+					if(g1=="1"){
+				     for(j=0 ; str5[i][j] !='\n' ; j++)
+				       cout<<str5[i][j];
+			          }
+			         else {
+				      cout<<">"<<i+1;
+				     }
+				    cout<<"\t"<<"Direction: "<<state[i][0];
+				    cout<<"\n";
+			         if(temp_e[i]<(fsum))
+					      cout<<" N/A";
+					      else
+                    for (j = 0; j < lms; j++)
+                        {
+						cout<<finalmotif[i][j];
+					   } 
+					   
+                         cout<<"\n";}
+		  }
+		  else{
 		  for(i=0 ; i<max ; i++){
 			  if(g1=="1"){
 				  for(j=0 ; str5[i][j] !='\n' ; j++)
@@ -1478,7 +1568,7 @@ class Computer {
 			   for(j=0 ; j<lms ; j++){
 			        printf("%c",finalmotif[i][j]);}
 			        cout<<"\n";
-		} 
+		} }
 			  
 		  
 		//  for(i=0 ; i<max ; i++)
@@ -1546,6 +1636,7 @@ class Computer {
                         }
 
                     }
+                    fsum=fsum+k;
                 
                     if (l == 0)
                     {
@@ -1609,11 +1700,10 @@ class Computer {
                //cout<< "Min:" << l2 << "-" << temp_e[l2];
                 //cout<< "\n";
                     subnuc="";
+                    
                 for (i=0; i<max; i++)
                 {
-                    
-                            {
-                                
+					
                                 a = 0;
                                 
                                 for (i1 = ming; i1 <= maxg; i1++)
@@ -1628,14 +1718,15 @@ class Computer {
 											subnuc="";
                                              for (j = 0; j < lms; j++)
                                             {
+												
                                                 if (j < lml)
                                                 {
                                                     seq2[a][j] = str2[i][l + j];
                                                     for (k2 = 0; k2 < nu; k2++)
                                                     {
-								subnuc=seq2[a][j];
-								if(md==2)
-							        subnuc=subnuc+seq2[a][j];
+								                      subnuc=seq2[a][j];
+								                      if(md==2)
+							                          subnuc=subnuc+seq2[a][j];
 							                            
                                                         if (subnuc == da[k2])
                                                         {
@@ -1648,9 +1739,9 @@ class Computer {
                                                     seq2[a][j] = str2[i][l + j + i1];
                                                     for (k2 = 0; k2 < nu; k2++)
                                                     {
-								subnuc=seq2[a][j];
-								if(md==2)
-							        subnuc=subnuc+seq2[a][j];
+								                   subnuc=seq2[a][j];
+								                   if(md==2)
+							                       subnuc=subnuc+seq2[a][j];
 							                            
                                                         if (subnuc == da[k2])
                                                         {
@@ -1670,9 +1761,9 @@ class Computer {
 
                                             if (min <= score2[i][l])
                                             {
-							x=l+1+i1+lml;
-							if(g1=="1")
-				                         for(A=0 ; str5[i][A] !='\n' ; A++)
+							                x=l+1+i1+lml;
+							                if(g1=="1")
+				                             for(A=0 ; str5[i][A] !='\n' ; A++)
 				                               cout<<str5[i][A];
 				                                    else				                                       
                                                       cout<<"Site:" << (i) ;
@@ -1688,7 +1779,7 @@ class Computer {
 
                         }
                     }
-                }
+                
 			
 			//exit: 
 			
@@ -1703,7 +1794,7 @@ class Computer {
 	            int temp_e[1000],positionl[9000][2],positionr[9000][2];
 	            float freq1[16][50],freq2[4][50],score1[9000],score2[9000][2];
 	            float BG[16],BG2[16],entropytotal[100][2],entropy[50],minentropy[100],testi[100];
-	            float rndsel,sum,sum2,sum3,t,div,div1[2],maxscor[2];
+	            float fsum,rndsel,sum,sum2,sum3,t,div,div1[2],maxscor[2];
 	            string subnuc,subnuc1;
 	            bool flag,bb;
                 char line,finalmotif[1000][50],strmotif[1000][50],seq1[1000][50],seq5[1000][50],seq2[9000][50],seq4[9000][50],ran1[1000][50];

@@ -44,7 +44,7 @@ Arguments
 -f 1 for fasta file, or 2 for text file (no header) (default 1)
 -p 1 for the given strand, or 2 for both the given and reverse complement strands (default 1)
 -n 1 for PWM, or 2 for DWM (default 1)
--s 1 for one occurrence motif site per sequence, or 2 for any number of repetitions (default 1)
+-s 1 for one occurrence motif site per sequence, or 2 for any number of repetitions or 3 Zero or One Occurrence per Sequence (zoops) (default 1)
 ```
 
 *****

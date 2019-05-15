@@ -779,6 +779,7 @@ class Computer {
 					 seq1[i][j]='*';
 				 }
 		//		 cout<<"\n------------------------------------------------------\n";
+		if(p==2){
 			
 			for(j=0 ; j<max ; j++){
 			  k=0;
@@ -805,7 +806,7 @@ class Computer {
 					 seq5[i][j]='*';
 				 }	 
 				
-		
+		}
 		
 	
 	}
@@ -852,7 +853,7 @@ class Computer {
 			         }
 			
 			 
-	
+	if(p==2){
 			
 			for(i=0 ; i<nu ; i++)
 			   BG2[i]=0; 
@@ -887,12 +888,16 @@ class Computer {
 			            }
 			            
 			         }
+			         for(i=0 ; i<nu ; i++)
+			         sum2=sum2+BG2[i];
+			         
+			}         
 		//	cout<<"\nprint nucleotide count of random select PFM:\n";
 		//		   printf("   Backgrand   \n");
 				  for(i=0 ; i<nu ; i++){
 		//            cout<<da[i]<<"\t"<<BG[i]<<"\t";
 		            sum=sum+BG[i];
-		            sum2=sum2+BG2[i];
+		            //sum2=sum2+BG2[i];
 		//		      for(j=0 ; j<(lm-1) ; j++)
 		//		          printf("%d  ",freq[i][j]);
 		//	      cout<<"\n";
@@ -903,10 +908,12 @@ class Computer {
 		//			  cout<<da[i]<<" ";
 		          if(md==1){
 					  BG[i]=(BG[i]+0.25)/sum;
+					  if(p==2)
 					  BG2[i]=(BG2[i]+0.25)/sum2;
 				  }
 				  else if(md==2){
 					  BG[i]=(BG[i]+0.0625)/sum;
+					  if(p==2)
 					  BG2[i]=(BG2[i]+0.0625)/sum2;
 				  }
 		//			 printf("%.3f ", BG[i]);
@@ -918,6 +925,8 @@ class Computer {
 			         
 		//		          printf("%.2f  ",freq1[i][j]);
 					  }}
+					  
+					  if(p==2){
 					  count_nucleotide(seq5);
 					  for(i=0 ; i<nu ; i++)
 					    for(j=0 ; j<(lm) ; j++){
@@ -927,6 +936,7 @@ class Computer {
 			                  freq2[i][j]=(float((freq[i][j])+0.0625)/max);
 		//		      cout<<"\n";
 				  }
+			  }
 		}		  
 	
 	//--------------------------------------------------------------
@@ -966,12 +976,12 @@ class Computer {
 			        } 
 				}
 				
-				
+				/*
 			 	 for(i=a ; i<9000 ; i++)
 			 	   for(j=0 ; j<lms ; j++) 
 			 	     seq2[i][j]='\0';
 			      
-	/*		  
+			  
 			 	 for (l=0 ; l<a ; l++){
 					 cout<<l<<":";
 			 	 for (j=0 ; j<lm ; j++)
@@ -1019,7 +1029,7 @@ class Computer {
 					}
 					score1[i]=score1[i]/div;
 		//			cout<<"="<<score1[i]<<" number:"<<i<<"\n";
-					sum=sum+score1[i];
+					//sum=sum+score1[i];
 					
 					}
 				
@@ -1072,13 +1082,13 @@ class Computer {
 			         
 				}
 			 }
-			 	
+			 	/*
 			 	//if(z==6) {
 			 	 for(i=a ; i<9000 ; i++)
 			 	   for(j=0 ; j<lms ; j++) 
 			 	     seq4[i][j]='\0';
 			      
-			/*
+			
 			 	 for (l=0 ; l<a ; l++){
 					 cout<<l<<":";
 			 	 for (j=0 ; j<lm ; j++)

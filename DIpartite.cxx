@@ -1697,7 +1697,7 @@ class Computer {
 					sumbg3=sumbg3 * pow(BG4[i1],BG3[i1]);
 					//cout<<BG4[i1]<<"\t"<<BG3[i1]<<"\n";
 					}
-					cout<<"\nsumBG:"<<sumbg3<<"\n";
+					//cout<<"\nsumBG:"<<sumbg3<<"\n";
 				
 				
 		//sumscore[z]=sumscore[z]/(a*y1);

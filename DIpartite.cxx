@@ -1577,7 +1577,8 @@ class Computer {
 	float scorez[2000], sumQ[2000];
 	int BG3[16];
 	
-	float y1=0, sumbg3=1, landa=0.99;
+	float y1=0, landa=0.99;
+	double sumbg3=1;
 	while(z<max){
 	
 	for(i=0 ; i<max ; i++){
@@ -1591,7 +1592,7 @@ class Computer {
 		Background_count();
 		for(k1=0 ; k1<nu ; k1++){
 			BG4[k1]=BG[k1];
-			//cout<<BG[k1]<<"\t";
+			//cout<<BG4[k1]<<"\t";
 			}
 		subseqlength3(); 
 		
@@ -1631,7 +1632,7 @@ class Computer {
 					       for(k=0 ; k<nu ; k++){					
 					        subnuc=str2[z][k1];
 					        if(md==2)
-					        subnuc=str2[z][k1+1];					
+					        subnuc+=str2[z][k1+1];					
 					        if(subnuc == da[k])
 					        div=((div)*(BG[k]));
 				            }}
@@ -1640,7 +1641,7 @@ class Computer {
 					        for(k=0 ; k<nu ; k++){					
 					        subnuc=str2[z][k1];
 					        if(md==2)
-					        subnuc=str2[z][k1+1];					
+					        subnuc+=str2[z][k1+1];					
 					        if(subnuc == da[k])
 					        div=((div)*(BG[k]));
 				          }
@@ -1678,20 +1679,25 @@ class Computer {
 					
 					
 					for(k1=0; k1<lenstr2[z]-1; k1++){
+						
 						subnuc1=str2[z][k1];
 						if(md==2)
-					    subnuc1=str2[z][k1+1];
+					    subnuc1+=str2[z][k1+1];
+					    
 						for(k=0 ; k<nu ; k++){
-						if(subnuc1 == da[k])
-						BG3[k]++;
-					    }}
+						   if(subnuc1 == da[k])
+						     BG3[k]++;
+					    }
+					    
+					    }
+					   
 					    
 				sumbg3=1;
 				for(i1=0; i1<nu ; i1++){
-					sumbg3=sumbg3* pow(BG4[i1],BG3[i1]);
-					//cout<<BG3[i1]<<"\t";
+					sumbg3=sumbg3 * pow(BG4[i1],BG3[i1]);
+					//cout<<BG4[i1]<<"\t"<<BG3[i1]<<"\n";
 					}
-					//cout<<"\nsumBG:"<<sumbg3<<"\n";
+					cout<<"\nsumBG:"<<sumbg3<<"\n";
 				
 				
 		//sumscore[z]=sumscore[z]/(a*y1);

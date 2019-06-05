@@ -888,15 +888,24 @@ class Computer {
 			            }
 			            
 			         }
+			         //if(zm==84)
+			         //for(i=0 ; i<nu ; i++)
+			         //BG2[i]=1;
+			         
 			         for(i=0 ; i<nu ; i++)
 			         sum2=sum2+BG2[i];
 			         
-			}         
+			}  
+			 
+			        //if(zm==84)
+			         //for(i=0 ; i<nu ; i++)
+			         //BG[i]=1;      
 		//	cout<<"\nprint nucleotide count of random select PFM:\n";
 		//		   printf("   Backgrand   \n");
 				  for(i=0 ; i<nu ; i++){
 		//            cout<<da[i]<<"\t"<<BG[i]<<"\t";
 		            sum=sum+BG[i];
+		            
 		            //sum2=sum2+BG2[i];
 		//		      for(j=0 ; j<(lm-1) ; j++)
 		//		          printf("%d  ",freq[i][j]);
@@ -1004,7 +1013,7 @@ class Computer {
 			 sum=0;
 			 
 		   
-			 for(i=min ; i<a ; i++){
+			 for(i=0 ; i<a ; i++){
 				 score1[i]=0;
 				 div=0;
 			    for(j=0 ; j<(lm) ; j++){
@@ -1032,7 +1041,7 @@ class Computer {
 					//sum=sum+score1[i];
 					
 					}
-				
+				if(zm != 84){
 				maxscor[0]=score1[0];
 				for(i=min ; i<a ; i++){
 				 if(maxscor[0]>score1[i]){
@@ -1042,10 +1051,24 @@ class Computer {
 				 
 			 }
 	//			cout<<"\nMaximume Value Number:"<<score1[k]<<"\n";
+	
 				rndnuml[z][r]=positionl[k][0];
 				rndnumr[z][r]=positionr[k][0];
 				state[z][r]='P';
-		
+		}
+		/*else{
+			cout<<"\n---------test score1--------\n";
+			for(i=0; i<a; i++)
+			cout<<score1[i]<<"\n";
+			cout<<"\n---------test Freq1--------\n";
+			for(j=0 ; j<(nu) ; j++){
+				for(k=0 ; k<lm ; k++)
+				cout<<freq1[j][k]<<"\t";
+				cout<<"\n";}
+			cout<<"\n---------test BG--------\n";
+			for(i=0; i<nu; i++)
+			cout<<BG[i]<<"\n";
+			}*/
 					
 					  
 	 
@@ -1348,7 +1371,7 @@ class Computer {
 			temp_e[1]=0;
 			
 			
-			while((bb==false)&&(temp_e[1]<15)){
+			while((bb==false)&&(temp_e[1]<30)){
 			
 			step2();
 			f1=entropytotal[r][0];
@@ -1481,88 +1504,11 @@ class Computer {
 		  }
 		  
 		  if(s==3){
-			  
-			 		  
-			
+			  zeromotif();		  			
 		   
-			    //md=1;
-                //int nu2=4;
-                //lm=lms;
-                string da2[4];
-                da2[0]="A"; da2[1]="C"; da2[2]="G"; da2[3]="T";
-               count_nucleotide(finalmotif);
-			  
-			  for (i = 0; i < lm; i++)
-                {
-					
-                    k = 0;
-                    l = 0;
-                    for (j = 0; j < nu; j++)
-                    {                       
-                        if (freq[j][i] > k)
-                        {
-                            k = freq[j][i];
-                            l = j;
-                            
-                        }
-
-                    }
-                    fsum=fsum+k;
-                }
-			  
-			  for(i=0; i<max; i++)
-                {
-					temp_e[i]=0;
-                    for(j=0; j<lms; j++)
-                    {
-						subnuc="";
-                        for(k=0; k<nu; k++)
-                        {
-							subnuc=finalmotif[i][j];
-							if(md==2)
-							subnuc=subnuc+finalmotif[i][j+1];
-							
-                            if (subnuc== da[k])
-                            {
-                                temp_e[i] += freq[k][j];
-                                
-                            }
-                        }
-                    }}
-                    fsum=fsum/4*3;
-                    
-                    for(i=0 ; i<max ; i++){	
-						  if(temp_e[i]<(fsum))
-					      cout<<"N/A \t\t\t\t N/A\n";
-					      else{		  
-			             cout<<initialmotif[i][0]<<" \t\t\t\t "<<initialmotif[i][1];			  
-			             cout<<"\n";}
-		                  }
-		                cout<<"\n";
-                    
-                    
-                for (i=0; i<max; i++)
-                {
-					if(g1=="1"){
-				     for(j=0 ; str5[i][j] !='\n' ; j++)
-				       cout<<str5[i][j];
-			          }
-			         else {
-				      cout<<">"<<i+1;
-				     }
-				    cout<<"\t"<<"Direction: "<<state[i][0];
-				    cout<<"\n";
-			         if(temp_e[i]<(fsum))
-					      cout<<" N/A";
-					      else
-                    for (j = 0; j < lms; j++)
-                        {
-						cout<<finalmotif[i][j];
-					   } 
-					   
-                         cout<<"\n";}
-		  }
-		  else{
+			    }
+		  
+		  else if (s==1){
 		  for(i=0 ; i<max ; i++){
 			  if(g1=="1"){
 				  for(j=0 ; str5[i][j] !='\n' ; j++)
@@ -1583,13 +1529,16 @@ class Computer {
 		  
 		//  for(i=0 ; i<max ; i++)
 		  //cout<<rndnuml[i][l]<<"\t"<<rndnumr[i][l]<<"\n";
-		
-			
+		  
+					
 		 cout<<"\n***********************************************\n";
 				 
 				 
-				
+				if(s==1 || s==2)
 				count_nucleotide(finalmotif); 
+				else
+				count_nucleotide(finalmotifz);
+				
 				
 				cout<<"\n Nucleotide count of select Position Frequency Matrix(PFM):\n\n  ";
 				for(i=0 ; i<lm ; i++){
@@ -1611,8 +1560,428 @@ class Computer {
 		secondmotif();	
 		}
 		 
-	}
+		 
 		
+		 
+	}
+	//-------------------------------ZOOPS---------------------------------------
+	void zeromotif(){
+	zm=84;
+	r=0;	
+	z=0;
+	sum=0;
+	sum2=0;
+	sum3=0;
+	
+	float sumscore[2000],BG4[16];
+	float scorez[2000], sumQ[2000];
+	int BG3[16];
+	
+	float y1=0, sumbg3=1, landa=0.99;
+	while(z<max){
+	
+	for(i=0 ; i<max ; i++){
+	    rndnuml[i][r]=initialmotif[i][0];
+		rndnumr[i][r]=initialmotif[i][1];
+	}
+		selseq=z;
+		//max=lenstr2[z];
+		selectseq();
+		
+		Background_count();
+		for(k1=0 ; k1<nu ; k1++){
+			BG4[k1]=BG[k1];
+			//cout<<BG[k1]<<"\t";
+			}
+		subseqlength3(); 
+		
+		sum=0;
+			 
+		   
+			 for(i=0 ; i<a ; i++){
+				
+				 score1[i]=1;
+				 div=1;
+			    for(j=0 ; j<(lm) ; j++){
+					subnuc=seq2[i][j];
+					
+					if(md==2)
+					subnuc+=seq2[i][j+1];
+					
+					for(k=0 ; k<nu ; k++)
+					 
+					if (subnuc==da[k]){
+			//		   printf("Log%.2f ",freq1[k][j]);
+					    //div=div+log(BG[k]);
+					    score1[i]=score1[i]*(freq1[k][j]);
+					   }
+				/*	   
+					   if(j<(lm-1))
+					   cout<<"+";
+					   else
+					  printf("/%.6f",div);   */
+					   
+					}
+					
+					
+					for(k1=0; k1<lenstr2[z]-1; k1++){
+						
+						if(rml==0){
+					     if((k1<positionl[a][0] || k1>positionl[a][0]+lml) && a<900)
+					       for(k=0 ; k<nu ; k++){					
+					        subnuc=str2[z][k1];
+					        if(md==2)
+					        subnuc=str2[z][k1+1];					
+					        if(subnuc == da[k])
+					        div=((div)*(BG[k]));
+				            }}
+				         else if(rml>0){
+						  if((((k1<positionl[a][0]) || (k1>positionl[a][0]+lml && k1<positionr[a][0]) || (k1>positionr[a][0])) && a<900))
+					        for(k=0 ; k<nu ; k++){					
+					        subnuc=str2[z][k1];
+					        if(md==2)
+					        subnuc=str2[z][k1+1];					
+					        if(subnuc == da[k])
+					        div=((div)*(BG[k]));
+				          }
+					     }
+				        }
+				        
+				        
+				        
+					score1[i]=score1[i]*div;
+					y1=(landa)/(float)(lenstr2[z]-lm+1);
+					
+	                y1=1-y1;
+	                //score1[i]/=y1;
+		//			cout<<"="<<score1[i]<<" number:"<<i<<"\n";
+					//sum=sum+score1[i];
+					
+					}
+	    
+	    sumscore[z]=0;
+	    //y1=0.99/(lenstr2[z]-lm+1);
+	    //y1=1-y1;
+	    //div3=y1;
+	    
+	    for(i=0 ; i<a ; i++){
+				sumscore[z]+=score1[i];
+				//scorez[z][i]=score1[i];
+				//cout<<i<<"-"<<score1[i]<<"\n";
+				}
+				//div3=scorez[0][0];
+				//cout<<div3;
+				
+				for(i1=0; i1<nu ; i1++){
+					BG3[i1]=0;}
+					
+					
+					
+					for(k1=0; k1<lenstr2[z]-1; k1++){
+						subnuc1=str2[z][k1];
+						if(md==2)
+					    subnuc1=str2[z][k1+1];
+						for(k=0 ; k<nu ; k++){
+						if(subnuc1 == da[k])
+						BG3[k]++;
+					    }}
+					    
+				sumbg3=1;
+				for(i1=0; i1<nu ; i1++){
+					sumbg3=sumbg3* pow(BG4[i1],BG3[i1]);
+					//cout<<BG3[i1]<<"\t";
+					}
+					//cout<<"\nsumBG:"<<sumbg3<<"\n";
+				
+				
+		//sumscore[z]=sumscore[z]/(a*y1);
+		//cout<<"test";
+		//cout<<"\n--------Sum SCORE-----\n"<<z<<"  "<<sumscore[z];
+		
+		sum=0;
+		sumQ[z]=0;
+    for(i1=0 ; i1<a ; i1++){
+		//for(k1=0; k1<lenstr2[z]-1; k1++){
+		
+		scorez[i1]=score1[i1]/(sumbg3*y1+sumscore[z]);
+		sumQ[z]+=scorez[i1];}
+    //cout<<"\n scoreQ: "<<sumQ[z]<<"\t";
+		
+	    initial=z;
+	    z++;
+	//cout<<"\n------------------------------------------------\n";
+	//cout<<"\n------------------------------------------------\n";
+    //cout<<"\n------------------------------------------------\n";
+    }
+    //min1=ave[0];
+   
+    
+    
+    //cout<<"\n------------------------------------------\nLanda"<<landa<<"\n";
+    /* cout<<"MIN"<<j<<":"<<min1;
+    
+    for(i=0; i<max; i++){
+		sum3=abs(sumscore[i]-sum);
+		sum3=pow(sum3,2);
+		sum2+=sum3;
+	}
+	cout<<"\n"<<sum2<<"\n";
+	sum2=sum2/(max-1);
+		sum2=sqrt(sum2);
+    cout<<sum2<<"\n----------\n";
+	sum2*=1;
+	cout<<"\n------Sum2----\n";
+	//cout<<sum2;
+	
+	if(md==1)
+	sum2=sum/10;
+	else if(md==2)
+	sum2=sum/10000000;
+	*/
+	//cout<<sum2<<"\n-------------------------------\n";
+	int TP,TN,FN,FP;
+	TP=TN=FN=FP=0;
+	//(sumscore[i]<=(sum+sum2)) && 
+	for(i=0; i<max; i++){
+		if(i<323 && sumQ[i]>=(landa))
+		TP++;
+		if(i<323 && sumQ[i]<(landa))
+		FN++;
+		if(i>322 && sumQ[i]>=(landa))
+		FP++;
+		if(i>322 && sumQ[i]<(landa))
+		TN++;
+		}
+		
+		//cout<<"\n---------TP--------\n";
+		//cout<<"TP:"<<TP<<"\n"<<"FN:"<<FN<<"\n"<<"FP:"<<FP<<"\n"<<"TN:"<<TN<<"\n";
+	for(i=0 ; i<max ; i++){	
+						  if(sumQ[i]<(landa))
+					      cout<<"N/A \t\t\t\t N/A\n";
+					      else{		  
+			             cout<<initialmotif[i][0]<<" \t\t\t\t "<<initialmotif[i][1];			  
+			             cout<<"\n";}
+					  
+		                cout<<"\n";}
+                    
+                    
+                for (i=0; i<max; i++)
+                {
+					if(g1=="1"){
+				     for(j=0 ; str5[i][j] !='\n' ; j++){
+				       cout<<str5[i][j];}
+				       cout<<"\tQ_Score:"<<sumQ[i];
+			          }
+			         else if(g1=="2"){
+				      cout<<">"<<i+1<<"\tQ_Score:"<<sumQ[i];
+				     }
+				    cout<<"\t"<<"Direction: "<<state[i][0];
+				    cout<<"\n";
+			         if(sumQ[i]<(landa))
+					      cout<<" N/A";
+					      else
+                    for (j = 0; j < lms; j++)
+                        {
+						cout<<finalmotif[i][j];
+					   } 
+					   
+                         cout<<"\n";}
+                         x=0;
+                         for(i=0 ; i<max; i++){
+							 if(sumQ[i]>=(landa))
+                              for(j=0 ; j<(lm) ; j++)
+							    finalmotifz[i][j]=finalmotif[i][j]; 						 
+							 else
+							   for(j=0 ; j<(lm) ; j++)
+							     finalmotifz[i][j]=' ';
+							     
+							 }
+							 
+	
+	cout<<"\n-------------------------------------------------------------\n";
+	cout<<"\n-------------------------------------------------------------\n";
+	cout<<"\n-------------------------------------------------------------\n";
+    }
+	//----------------------------------------------------------------------------------------
+	void zeromotif1(){
+	float score11[2000];
+	float z8,z9;
+	zm=84;
+	count_nucleotide(finalmotif);
+
+	sum=0;
+	sum2=0;
+	sum3=0;
+	a=max;
+	
+	for(i=0 ; i<max ; i++){
+		if(i!=selseq)
+		for(j=0 ; j<lenstr2[i]-1 ; j++){
+					 for(k=0 ; k<nu ; k++){	
+						 if(rml==0){
+						 if (j<initialmotif[i][0]-1 || (j>(initialmotif[i][0]+rml-1))){
+							subnuc=str2[i][j];
+							
+							  if(md==2)
+						      subnuc+=str2[i][j+1]; 
+						      
+			               if(subnuc==da[k])
+			                  BG[k]++;}
+			                 }
+			                  else
+			              	 {       
+						 if (j<initialmotif[i][0]-1 || ((j>(initialmotif[i][0]+lml-1)) && (j<initialmotif[i][1]-1)) || (j>(initialmotif[i][1]+rml-1))){
+							subnuc=str2[i][j];
+							
+							if(md==2)
+						    subnuc+=str2[i][j+1]; 
+						    
+			               if(subnuc==da[k])
+			                  BG[k]++;} 
+			            }
+					}
+			            }
+			            
+			            for(i=0 ; i<nu ; i++){
+			            sum=sum+BG[i];
+	
+				} 
+			}
+		
+				for(i=0 ; i<nu ; i++){
+	
+		          if(md==1){
+					  BG[i]=(BG[i]+0.25)/sum;
+					  if(p==2)
+					  BG2[i]=(BG2[i]+0.25)/sum2;
+				  }
+				  else if(md==2){
+					  BG[i]=(BG[i]+0.0625)/sum;
+					  if(p==2)
+					  BG2[i]=(BG2[i]+0.0625)/sum2;
+				  }
+	
+				      for(j=0 ; j<(lm) ; j++){
+						if(md==1)  
+			               freq1[i][j]=(float((freq[i][j])+0.25)/max);
+			             else if(md==2)
+			               freq1[i][j]=(float((freq[i][j])+0.0625)/max);
+			         
+		
+					  }}
+			            
+			         
+				 score1[i]=0;
+				 div=0;
+			    for(j=0 ; j<(lm) ; j++){
+					subnuc=finalmotif[i][j];
+					
+					if(md==2)
+					subnuc+=finalmotif[i][j+1];
+					
+					for(k=0 ; k<nu ; k++)
+					 
+					if (subnuc==da[k]){
+					   //printf("Log%.2f ",freq1[k][j]);
+					    div=div+log(BG[k]);
+					    score1[i]=score1[i]+(freq1[k][j]);
+					   }
+					   
+					  
+					      
+					   
+					
+					score1[i]=-1 * score1[i]/div;
+					//cout<<"="<<score1[i]<<" number:"<<i<<"\n";
+					//sum=sum+score1[i];
+					
+					}
+	
+	cout<<"\n-------------------Score------------------\n";
+	for(i=0; i<max; i++){
+	cout<<i+1<<"-"<<score1[i]<<"\n";
+	sum+=score1[i];
+	score11[i]=score1[i];
+    position[i]=i+1;
+    }
+  
+    for(i=(max-1); i>=0; i--)
+	for(j=0; j<i ; j++)
+		if(score11[j]>score11[j+1]){
+			z9=score11[j];
+			z8=position[j];
+			score11[j]=score11[j+1];
+			position[j]=position[j+1];
+			score11[j+1]=z9;
+			position[j+1]=z8;}
+			
+			i=(max)/2;
+			sum=sum/max;
+			cout<<"\n------Middle----\n"<<sum<<"\n----------\n";
+	
+	for(i=0; i<max; i++){
+		sum3=abs(score1[i]-sum);
+		//sum3=pow(sum3,2);
+		sum2+=sum3;
+	}
+	cout<<sum2<<"\n";
+	sum2=sum2/(max-1);
+		sum2=sqrt(sum2);
+    cout<<sum2<<"\n----------\n";
+	sum2*=1;
+	cout<<sum2<<"\n----------\n";
+	cout<<"\n-------------------Score------------------\n";
+	int TP,TN,FN,FP;
+	TP=TN=FN=FP=0;
+	for(i=0; i<max; i++){
+		if(i<323 && score1[i]>sum2)
+		TP++;
+		if(i<323 && score1[i]<sum2)
+		FN++;
+		if(i>322 && score1[i]>sum2)
+		FP++;
+		if(i>322 && score1[i]<sum2)
+		TN++;
+		}
+		
+		cout<<"\n---------TP--------\n";
+		cout<<"TP:"<<TP<<"\n"<<"FN:"<<FN<<"\n"<<"FP:"<<FP<<"\n"<<"TN:"<<TN<<"\n";
+	//cout<<i+1<<"   "<<position[i]<<"-"<<score11[i]<<"\n";
+	
+	
+	
+	
+	        for(i=0 ; i<max ; i++){	
+						  if(sum2 > score1[i])
+					      cout<<"N/A \t\t\t\t N/A\n";
+					      else{		  
+			             cout<<initialmotif[i][0]<<" \t\t\t\t "<<initialmotif[i][1];			  
+			             cout<<"\n";}
+					  
+		                cout<<"\n";}
+                    
+                    
+                for (i=0; i<max; i++)
+                {
+					if(g1=="1"){
+				     for(j=0 ; str5[i][j] !='\n' ; j++)
+				       cout<<str5[i][j];
+			          }
+			         else {
+				      cout<<">"<<i+1;
+				     }
+				    cout<<"\t"<<"Direction: "<<state[i][0];
+				    cout<<"\n";
+			         if(sum2 > score1[i])
+					      cout<<" N/A";
+					      else
+                    for (j = 0; j < lms; j++)
+                        {
+						cout<<finalmotif[i][j];
+					   } 
+					   
+                         cout<<"\n";}}
+	//----------------------------------------------------------------------------------------------	
 		void secondmotif(){
 			
 			//int k5,j3,i3,a1,l3=0;
@@ -1799,15 +2168,15 @@ class Computer {
                 //std::vector<int> lenstr2;
                 
 		        char ch,str2[1000][1000],str3[1000][1000],str4[2000][1000],str5[1000][1000],state[1000][100];
-	            int i , i1,j,k1,k2,k,l,l2,md,nu,lms,tf,p,rnd,rnd1,rnd2,rnd3,nmax,min,max,max2,ming,maxg,x,y,A,B,C,D,a,b,r,ns,g,z,lml,rml,lm,s;
+	            int i , i1,j,k1,k2,k,l,l2,md,nu,lms,tf,p,rnd,rnd1,rnd2,rnd3,nmax,min,max,max2,ming,maxg,x,y,A,B,C,D,a,b,r,ns,g,z,lml,rml,lm,s,zm;
 	            int selseq,initial,lenstr2[1000],freq[16][50],rndnuml[1000][100],rndnumr[1000][100],rndnuml2[1000][100],rndnumr2[1000][100],initialmotif[1000][2],sigb[1000][2];
-	            int temp_e[1000],positionl[9000][2],positionr[9000][2];
+	            int temp_e[1000],positionl[9000][2],positionr[9000][2], position[2000];
 	            float freq1[16][50],freq2[4][50],score1[9000],score2[9000][2];
 	            float BG[16],BG2[16],entropytotal[100][2],entropy[50],minentropy[100],testi[100];
 	            float fsum,rndsel,sum,sum2,sum3,t,div,div1[2],maxscor[2];
 	            string subnuc,subnuc1;
 	            bool flag,bb;
-                char line,finalmotif[1000][50],strmotif[1000][50],seq1[1000][50],seq5[1000][50],seq2[9000][50],seq4[9000][50],ran1[1000][50];
+                char line,finalmotif[1000][50],finalmotifz[1000][50],strmotif[1000][50],seq1[1000][50],seq5[1000][50],seq2[9000][50],seq4[9000][50],ran1[1000][50];
                 string da[16];
                 string g1,seq,temp,temp2,temp3,address,input;
                 ifstream myfile1,myfile2,myfile3,myfile4;

@@ -1573,8 +1573,8 @@ class Computer {
 	sum2=0;
 	sum3=0;
 	
-	float sumscore[2000],BG4[16];
-	float scorez[2000], sumQ[2000];
+	double sumscore[2000],BG4[16];
+	double scorez[2000], sumQ[2000];
 	int BG3[16];
 	
 	float y1=0, landa=0.99;

@@ -1573,12 +1573,16 @@ class Computer {
 	sum2=0;
 	sum3=0;
 	
-	double sumscore[2000],BG4[16];
-	double scorez[2000], sumQ[2000];
+	//double sumscore[1000],BG4[16];
+	
 	int BG3[16];
 	
-	float y1=0, landa=0.99;
-	double sumbg3=1;
+	float landa=0.99;
+	long double sumbg3=1, scorez[2000], div, sumQ[2000], score1[2000], sumscore[2000],BG4[16],y1=0;
+	
+	if(md==2)
+	landa=0.999;
+	
 	while(z<max){
 	
 	for(i=0 ; i<max ; i++){
@@ -1600,7 +1604,7 @@ class Computer {
 			 
 		   
 			 for(i=0 ; i<a ; i++){
-				
+				if(i<2000){
 				 score1[i]=1;
 				 div=1;
 			    for(j=0 ; j<(lm) ; j++){
@@ -1611,24 +1615,16 @@ class Computer {
 					
 					for(k=0 ; k<nu ; k++)
 					 
-					if (subnuc==da[k]){
-			//		   printf("Log%.2f ",freq1[k][j]);
-					    //div=div+log(BG[k]);
+					if ((subnuc==da[k])){
 					    score1[i]=score1[i]*(freq1[k][j]);
 					   }
-				/*	   
-					   if(j<(lm-1))
-					   cout<<"+";
-					   else
-					  printf("/%.6f",div);   */
-					   
-					}
-					
+				}
+				
 					
 					for(k1=0; k1<lenstr2[z]-1; k1++){
-						
+						if(k1<2000){
 						if(rml==0){
-					     if((k1<positionl[a][0] || k1>positionl[a][0]+lml) && a<900)
+					     if((k1<positionl[i][0] || k1>positionl[i][0]+lml))
 					       for(k=0 ; k<nu ; k++){					
 					        subnuc=str2[z][k1];
 					        if(md==2)
@@ -1637,7 +1633,7 @@ class Computer {
 					        div=((div)*(BG[k]));
 				            }}
 				         else if(rml>0){
-						  if((((k1<positionl[a][0]) || (k1>positionl[a][0]+lml && k1<positionr[a][0]) || (k1>positionr[a][0])) && a<900))
+						  if((((k1<positionl[i][0]) || (k1>positionl[i][0]+lml && k1<positionr[i][0]) || (k1>positionr[i][0]))))
 					        for(k=0 ; k<nu ; k++){					
 					        subnuc=str2[z][k1];
 					        if(md==2)
@@ -1647,31 +1643,26 @@ class Computer {
 				          }
 					     }
 				        }
+					}
 				        
-				        
-				        
-					score1[i]=score1[i]*div;
+				      //div=1; 
+					score1[i]=score1[i]*(div);
+					
 					y1=(landa)/(float)(lenstr2[z]-lm+1);
 					
 	                y1=1-y1;
-	                //score1[i]/=y1;
-		//			cout<<"="<<score1[i]<<" number:"<<i<<"\n";
-					//sum=sum+score1[i];
-					
+	                
+				}
 					}
 	    
 	    sumscore[z]=0;
-	    //y1=0.99/(lenstr2[z]-lm+1);
-	    //y1=1-y1;
-	    //div3=y1;
 	    
 	    for(i=0 ; i<a ; i++){
+			if(i<2000)
 				sumscore[z]+=score1[i];
-				//scorez[z][i]=score1[i];
-				//cout<<i<<"-"<<score1[i]<<"\n";
 				}
-				//div3=scorez[0][0];
-				//cout<<div3;
+				
+				//cout<<"sumscore:"<<sumscore[z]<<"\n";
 				
 				for(i1=0; i1<nu ; i1++){
 					BG3[i1]=0;}
@@ -1679,7 +1670,7 @@ class Computer {
 					
 					
 					for(k1=0; k1<lenstr2[z]-1; k1++){
-						
+						if(k1<2000){
 						subnuc1=str2[z][k1];
 						if(md==2)
 					    subnuc1+=str2[z][k1+1];
@@ -1688,40 +1679,35 @@ class Computer {
 						   if(subnuc1 == da[k])
 						     BG3[k]++;
 					    }
-					    
-					    }
+					}
+					}
 					   
 					    
 				sumbg3=1;
 				for(i1=0; i1<nu ; i1++){
-					sumbg3=sumbg3 * pow(BG4[i1],BG3[i1]);
+					//sumbg3=sumbg3 * (BG4[i1]*BG3[i1]);
+					sumbg3=sumbg3 * pow(BG4[i1], BG3[i1]);
 					//cout<<BG4[i1]<<"\t"<<BG3[i1]<<"\n";
 					}
 					//cout<<"\nsumBG:"<<sumbg3<<"\n";
 				
 				
-		//sumscore[z]=sumscore[z]/(a*y1);
-		//cout<<"test";
+		
 		//cout<<"\n--------Sum SCORE-----\n"<<z<<"  "<<sumscore[z];
 		
 		sum=0;
 		sumQ[z]=0;
     for(i1=0 ; i1<a ; i1++){
-		//for(k1=0; k1<lenstr2[z]-1; k1++){
-		
+		if(i1<2000){
 		scorez[i1]=score1[i1]/(sumbg3*y1+sumscore[z]);
 		sumQ[z]+=scorez[i1];}
-    //cout<<"\n scoreQ: "<<sumQ[z]<<"\t";
+		}
+    //cout<<"sumQ:"<<sumQ[z]<<"\n";
 		
 	    initial=z;
 	    z++;
-	//cout<<"\n------------------------------------------------\n";
-	//cout<<"\n------------------------------------------------\n";
-    //cout<<"\n------------------------------------------------\n";
+	
     }
-    //min1=ave[0];
-   
-    
     
     //cout<<"\n------------------------------------------\nLanda"<<landa<<"\n";
     /* cout<<"MIN"<<j<<":"<<min1;
@@ -1905,7 +1891,7 @@ class Computer {
 	
 	cout<<"\n-------------------Score------------------\n";
 	for(i=0; i<max; i++){
-	cout<<i+1<<"-"<<score1[i]<<"\n";
+	//cout<<i+1<<"-"<<score1[i]<<"\n";
 	sum+=score1[i];
 	score11[i]=score1[i];
     position[i]=i+1;
@@ -1923,17 +1909,17 @@ class Computer {
 			
 			i=(max)/2;
 			sum=sum/max;
-			cout<<"\n------Middle----\n"<<sum<<"\n----------\n";
+			//cout<<"\n------Middle----\n"<<sum<<"\n----------\n";
 	
 	for(i=0; i<max; i++){
 		sum3=abs(score1[i]-sum);
 		//sum3=pow(sum3,2);
 		sum2+=sum3;
 	}
-	cout<<sum2<<"\n";
+	//cout<<sum2<<"\n";
 	sum2=sum2/(max-1);
 		sum2=sqrt(sum2);
-    cout<<sum2<<"\n----------\n";
+    //cout<<sum2<<"\n----------\n";
 	sum2*=1;
 	cout<<sum2<<"\n----------\n";
 	cout<<"\n-------------------Score------------------\n";
